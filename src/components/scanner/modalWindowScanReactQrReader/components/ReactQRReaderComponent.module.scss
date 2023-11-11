@@ -1,0 +1,15 @@
+.cameraWrapper {
+  height: fit-content;
+  width: fit-content;
+  min-width: 400px;
+
+  margin: 10px;
+
+  //background-image: url(../../../assets/border.svg);
+  //background-repeat: no-repeat;
+
+  .cameraContainer {
+    height: 400px;
+    width: 400px;
+  }
+}

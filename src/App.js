@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import {Route, Routes} from 'react-router-dom'
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import './App.scss'
+import Sidebar from "./components/sidebar/Sidebar";
+import {routes} from "./routes/Routes";
+import Nav from "./components/nav/Nav";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    return (
+        <div className={"main-container"}>
+            <Sidebar/>
+            <Nav/>
+
+            <Routes>
+                {routes.map(({path, main}) => (
+                    <Route key={path}
+                           path={path}
+                           element={main()}
+                    />
+                ))}
+            </Routes>
+
+        </div>
+    );
 }
 
+//                <Route path="/registration" element={<SignUp/>}/>
 export default App;

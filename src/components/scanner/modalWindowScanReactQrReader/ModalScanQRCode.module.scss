@@ -1,0 +1,44 @@
+.scanContainer {
+  padding: 0;
+  width: 400px;
+  height: 400px;
+
+  p {
+    font-size: 1.4em;
+
+    span {
+      color: #219653;
+    }
+  }
+}
+
+.contentFullScreen {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: rgba(108, 117, 125, 0.50);
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .icon {
+    cursor: pointer;
+    position: absolute;
+    top: 26px;
+    right: 26px;
+  }
+
+  .icon:hover {
+    color: black;
+  }
+
+  h2, p {
+    color: white;
+    text-align: center;
+  }
+}
+
