@@ -1,0 +1,136 @@
+[
+  {
+    "id": 1,
+    "name": "laptop",
+    "variants": [
+      {
+        "id": 1,
+        "SKU": "LAP-TECH-VA1-12",
+        "name": "var 1",
+        "quantity": 21,
+        "value": 10,
+        "qr": true
+      },
+      {
+        "id": 2,
+        "SKU": "LAP-TECH-VA2-12",
+        "name": "var 2",
+        "quantity": 31213,
+        "value": 252520,
+        "qr": false
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "book",
+    "variants": [
+      {
+        "id": 1,
+        "SKU": "BOO-LIB-VA0-44",
+        "name": "var 0",
+        "quantity": 3,
+        "value": 9000,
+        "qr": true
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "lamp",
+    "variants": [
+      {
+        "id": 1,
+        "SKU": "LAM-HOM-RED-00",
+        "name": "red",
+        "quantity": 3,
+        "value": 100,
+        "qr": false
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "lamp red",
+    "variants": [
+      {
+        "id": 1,
+        "SKU": "LAM-HOM-RED-01",
+        "name": "red",
+        "quantity": 10,
+        "value": 400,
+        "qr": true
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "laptop",
+    "variants": [
+      {
+        "id": 1,
+        "SKU": "LAP-ELC-WHI-10",
+        "name": "white",
+        "quantity": 200,
+        "value": 9000,
+        "qr": false
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "mouse",
+    "variants": [
+      {
+        "id": 1,
+        "SKU": "MAU-HOM-000-00",
+        "name": "mouse",
+        "quantity": 39,
+        "value": 1670,
+        "qr": false
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "pencil",
+    "variants": [
+      {
+        "id": 234,
+        "SKU": "PEN-CAN-BLA-45",
+        "name": "-",
+        "quantity": 43,
+        "value": 50,
+        "qr": true
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "skirt",
+    "variants": [
+      {
+        "id": 1,
+        "SKU": "SKI-CLO-GRE-60",
+        "name": "grey",
+        "quantity": 343,
+        "value": 5674,
+        "qr": true
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "-",
+    "variants": [
+      {
+        "id": 1,
+        "SKU": "000-000-000-00",
+        "name": "-",
+        "quantity": 1,
+        "value": 99,
+        "qr": true
+      }
+    ]
+  }
+]

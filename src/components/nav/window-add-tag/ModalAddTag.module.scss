@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: auto;
+
+  background: white;
+
+  .code {
+    width: 230px;
+    margin: 2vh 0;
+  }
+
+  p {
+    font-size: 26px;
+    color: #219653;
+    padding: 1vh 1vw;
+
+    span {
+      color: #F2994A;
+    }
+  }
+
+  .icon {
+    position: relative;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.8);
+    margin-left: auto;
+    margin-top: -2vh;
+    margin-right: -2vh;
+  }
+
+  .icon:hover {
+    color: black;
+  }
+
+  .btnPrint {
+    margin: 1vh 0;
+    width: 230px;
+  }
+
+}

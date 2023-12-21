@@ -14,11 +14,11 @@ function App() {
             <Nav/>
 
             <Routes>
-                {routes.map(({path, main}) => (
+                {routes.map(({path, main, nav}) => (
                     <Route key={path}
                            path={path}
-                           element={main()}
-                    />
+                           element={main()}>
+                    </Route>
                 ))}
             </Routes>
 

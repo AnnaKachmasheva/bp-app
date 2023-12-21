@@ -28,12 +28,12 @@ const Html5QrReaderComponent = (props) => {
                 },
             };
 
-            // If you want to prefer back camera
+            // prefer back camera
             html5QrCode.start(
                 {facingMode: "environment"},
                 config,
                 qrCodeSuccessCallback
-            );
+            )
         }
 
         return () => {

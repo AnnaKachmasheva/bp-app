@@ -1,20 +1,22 @@
 import React, {useState} from "react";
-import {ModalScanQRCode} from "./modalWindowScanReactQrReader/ModalScanQRCode";
-import {ModalQRCode} from "./modalWindowQRCode/ModalQRCode";
+import {ModalScanQRCode} from "./window-scan-QR/ModalScanQRCode";
+import {ModalQRCode} from "./window-show-QR/ModalQRCode";
+import {QRScanLibraries} from "../../utils/Constants";
 
 
 function ScanComponent() {
 
     const scanMethodOptions = [
+        {value: 'html5-qrcode', label: 'html5-qrcode'},
+
         {value: 'react-qr-reader', label: 'react-qr-reader'},
         {value: 'react-zxing', label: 'react-zxing'},
         {value: 'react-qr-scanner', label: 'react-qr-scanner'},
-        {value: 'html5-qrcode', label: 'html5-qrcode'},
         {value: 'quagga', label: 'quagga'},
         {value: 'jsqr', label: 'jsqr'}
     ];
 
-    const [showModalScanReactQrReader, setShowModalScanReactQrReader] = useState(false);
+    const [showModalScanQr, setShowModalScanQr] = useState(false);
     const [showModalQRCode, setShowModalQRCode] = useState(false);
 
     const [data, setData] = useState(null);
@@ -31,14 +33,13 @@ function ScanComponent() {
 
     const handleClickScanBtn = () => {
         setData(null);
-        setShowModalScanReactQrReader(true);
+        setShowModalScanQr(true);
     }
-
 
     return (
         <div className={'contentContainer'}>
-            <ModalScanQRCode onClose={() => setShowModalScanReactQrReader(false)}
-                             show={showModalScanReactQrReader}
+            <ModalScanQRCode onClose={() => setShowModalScanQr(false)}
+                             show={showModalScanQr}
                              data={data}
                              handleData={handleData}
                              scanMethod={scanMethod}/>
@@ -54,7 +55,7 @@ function ScanComponent() {
                     <p>data: {data}</p>
                     <button type={'submit'}
                             className={'btn btn-outline-success'}
-                            onClick={() => setShowModalQRCode(true)}>
+                            onClick={() => setShowModalScanQr(true)}>
                         Show code
                     </button>
                 </div>
@@ -64,9 +65,9 @@ function ScanComponent() {
             <div className={'content'}>
                 <p>Select scan method:</p>
                 <select onChange={handleChange}>>
-                    {scanMethodOptions.map((method, i) =>
-                        <option value={method.value}>
-                            {method.label}
+                    {QRScanLibraries.map((library, index) =>
+                        <option value={library.name}>
+                            {library.name} - Version {library.version}
                         </option>)}
                 </select>
 

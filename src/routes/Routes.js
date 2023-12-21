@@ -1,31 +1,37 @@
 import React from "react";
 
-import ItemsPage from "../items-page/ItemsPage";
+import ItemsPage from "../pages/items-page/ItemsPage";
+import DashboardPage from "../pages/dashboard-page/DashboardPage";
+import TagsPage from "../pages/tags-page/TagsPage";
+import UsersPage from "../pages/users-page/UsersPage";
+import ProfilePage from "../pages/profile-page/ProfilePage";
+import {PageTitles} from "../utils/Constants";
+
 
 export const routes = [
     {
         path: "app/dashboard",
-        main: () => <ItemsPage/>,
-        navTitle:()=> <h3>Dashboard</h3>
+        main: () => <DashboardPage/>,
+        title: ()=> PageTitles.DASHBOARD
     },
     {
         path: "app/items",
         main: () => <ItemsPage/>,
-        navTitle: ()=> <h3>Items</h3>
+        title: ()=> PageTitles.ITEMS
     },
     {
         path: "app/tags",
-        main: () => <ItemsPage/>,
-        navTitle: ()=> <h3>Tags</h3>
+        main: () => <TagsPage/>,
+        title: ()=> PageTitles.TAGS
     },
     {
         path: "app/users",
-        main: () => <ItemsPage/>,
-        navTitle: ()=> <h3>Users</h3>
+        main: () => <UsersPage/>,
+        title: ()=> PageTitles.USERS
     },
     {
         path: "app/profile",
-        main: () => <ItemsPage/>,
-        navTitle: () => <h3>Profile</h3>
+        main: () => <ProfilePage/>,
+        title: ()=> PageTitles.PROFILE
     }
 ];
