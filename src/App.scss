@@ -19,43 +19,43 @@ $mediaMinWidth: 480px;
 
 
 // BUTTONS
-.btn-primary {
-  background: $primary-btn-color;
-  border: 0;
-}
+//.btn-primary {
+//  background: $primary-btn-color;
+//  border: 0;
+//}
+//
+//.btn-primary:hover {
+//  background: $primary-btn-color-hover;
+//}
+//
+//.btn-primary:not(:disabled):not(:disabled):active {
+//  background: $primary-btn-color-active;
+//}
 
-.btn-primary:hover {
-  background: $primary-btn-color-hover;
-}
-
-.btn-primary:not(:disabled):not(:disabled):active {
-  background: $primary-btn-color-active;
-}
-
-.base-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  height: 2.5em;
-
-  .icon {
-    width: auto;
-    margin: 0 10px;
-  }
-
-  span {
-    width: 130px;
-  }
-}
-
-.buttons {
-  display: inline-flex;
-
-  button {
-    width: 100%;
-  }
-}
+//.base-btn {
+//  display: inline-flex;
+//  align-items: center;
+//  justify-content: center;
+//
+//  height: 2.5em;
+//
+//  .icon {
+//    width: auto;
+//    margin: 0 10px;
+//  }
+//
+//  span {
+//    width: 130px;
+//  }
+//}
+//
+//.buttons {
+//  display: inline-flex;
+//
+//  button {
+//    width: 100%;
+//  }
+//}
 
 ul {
   list-style-type: none;
@@ -71,10 +71,10 @@ ul {
     font-size: 1.6em;
   }
 
-  button {
-    max-width: fit-content;
-    margin-left: auto;
-  }
+  //button {
+  //  max-width: fit-content;
+  //  margin-left: auto;
+  //}
 }
 
 // MODAL WINDOWS
@@ -83,6 +83,7 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
+
   left: 0;
   top: 0;
   right: 0;
@@ -95,6 +96,7 @@ ul {
   .content {
     width: 35%;
     height: auto;
+
     display: flex;
     flex-direction: column;
 
@@ -118,10 +120,10 @@ ul {
       margin: 3vh 0;
     }
 
-    .buttons {
-      display: inline-flex;
-      gap: 3vw;
-    }
+    //.buttons {
+    //  display: inline-flex;
+    //  gap: 3vw;
+    //}
   }
 }
 
@@ -138,7 +140,6 @@ ul {
 .content {
   margin-left: 300px;
   margin-right: 50px;
-
 }
 
 // pagination
@@ -190,31 +191,31 @@ ul {
       }
     }
 
-    .buttons-container {
-      display: flex;
-
-      button {
-        margin: 0 10px;
-      }
-    }
+    //.buttons-container {
+    //  display: flex;
+    //
+    //  button {
+    //    margin: 0 10px;
+    //  }
+    //}
 
     .column-action {
       width: 100px;
 
-      button {
-        border: none;
-        background: none;
+      //button {
+      //  border: none;
+      //  background: none;
+      //
+      //  .icon {
+      //    color: #828282;
+      //  }
+      //}
 
-        .icon {
-          color: #828282;
-        }
-      }
-
-      button:hover {
-        .icon {
-          color: black;
-        }
-      }
+      //button:hover {
+      //  .icon {
+      //    color: black;
+      //  }
+      //}
     }
 
     .empty-column {

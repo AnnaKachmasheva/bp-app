@@ -6,32 +6,38 @@ import TagsPage from "../pages/tags-page/TagsPage";
 import UsersPage from "../pages/users-page/UsersPage";
 import ProfilePage from "../pages/profile-page/ProfilePage";
 import {PageTitles} from "../utils/Constants";
+import DocumentationPage from "../pages/documentation-page/DocumentationPage";
+import BasicPage from "../pages/BasicPage";
 
 
 export const routes = [
     {
         path: "app/dashboard",
-        main: () => <DashboardPage/>,
-        title: ()=> PageTitles.DASHBOARD
+        main: () => <BasicPage page={<DashboardPage/>}
+                               title={PageTitles.DASHBOARD}/>
     },
     {
         path: "app/items",
-        main: () => <ItemsPage/>,
-        title: ()=> PageTitles.ITEMS
+        main: () => <BasicPage page={<ItemsPage/>}
+                               title={PageTitles.ITEMS}/>
     },
     {
         path: "app/tags",
-        main: () => <TagsPage/>,
-        title: ()=> PageTitles.TAGS
+        main: () => <BasicPage page={<TagsPage/>}
+                               title={PageTitles.TAGS}/>
     },
     {
         path: "app/users",
-        main: () => <UsersPage/>,
-        title: ()=> PageTitles.USERS
+        main: () => <BasicPage page={<UsersPage/>}
+                               title={PageTitles.USERS}/>
     },
     {
         path: "app/profile",
-        main: () => <ProfilePage/>,
-        title: ()=> PageTitles.PROFILE
+        main: () => <BasicPage page={<ProfilePage/>}
+                               title={PageTitles.PROFILE}/>
+    },
+    {
+        path: "documentation",
+        main: () => <DocumentationPage/>
     }
 ];

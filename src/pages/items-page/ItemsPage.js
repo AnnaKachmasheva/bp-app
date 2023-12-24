@@ -5,6 +5,8 @@ import {SlOptions} from "react-icons/sl";
 import {CiSquareChevDown} from "react-icons/ci";
 import {CountItems} from "../../utils/Constants";
 import Pagination from "../../components/pagination/Pagination";
+import Button, {ButtonSize, ButtonType} from "../../components/button/Button";
+import {AiOutlineCheck} from "react-icons/ai";
 
 
 function ItemsPage() {
@@ -119,14 +121,12 @@ class TableRowGroupItem extends Component {
                 <td>{totalValue}</td>
                 <td>{isQRCode ? <BsQrCode/> : '-'}</td>
                 <td className={'column-action'}>
-                    <button>
-                        <SlOptions size={22}/>
-                    </button>
-
-                    <button>
-                        <CiSquareChevDown className={'icon'}
-                                          size={22}/>
-                    </button>
+                    <Button type={ButtonType[3].type}
+                            size={ButtonSize[0].size}
+                            icon={<SlOptions/>}/>
+                    <Button type={ButtonType[3].type}
+                            size={ButtonSize[0].size}
+                            icon={<CiSquareChevDown/>}/>
                 </td>
             </tr>
         )
@@ -152,9 +152,9 @@ class TableRowVariant extends Component {
                 <td>{this.props.variant.qr ? <BsQrCode/> : '-'}</td>
 
                 <td className={'column-action'}>
-                    <button>
-                        <SlOptions size={22}/>
-                    </button>
+                    <Button type={ButtonType[3].type}
+                            size={ButtonSize[0].size}
+                            icon={<SlOptions/>}/>
                 </td>
             </tr>
         )

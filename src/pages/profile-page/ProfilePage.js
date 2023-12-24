@@ -5,6 +5,7 @@ import {MdPassword} from "react-icons/md";
 import {ModalDeleteProfileConfirm} from "./modalWindowDeleteUser/ModalDeleteProfileConfirm";
 import {ModalEditPassword} from "./modalWindowEditPassword/ModalEditPassword";
 import {ModalEditProfile} from "./modalWindowEditUser/ModalEditProfile";
+import Button, {ButtonSize, ButtonType} from "../../components/button/Button";
 
 function ProfilePage() {
 
@@ -43,11 +44,11 @@ function ProfilePage() {
                                show={showChangePasswordModal}/>
 
             <ModalEditProfile onClose={() => setShowUpdateUserModal(false)}
-                           show={showUpdateUserModal}
-                           firstName={user.firstName}
-                           lastName={user.lastName}
-                           email={user.email}
-                           phone={user.phone}
+                              show={showUpdateUserModal}
+                              firstName={user.firstName}
+                              lastName={user.lastName}
+                              email={user.email}
+                              phone={user.phone}
             />
 
 
@@ -57,12 +58,12 @@ function ProfilePage() {
 
                         <p>Personal information</p>
 
-                        <button type={'submit'}
-                                className={'btn btn-danger'}
-                                onClick={() => setShowConfirmDeleteModal(true)}>
-                            <BsTrash className={'icon'}/>
-                            <span>Delete account</span>
-                        </button>
+                        <Button label={'Delete account'}
+                                type={ButtonType[4].type}
+                                size={ButtonSize[0].size}
+                                onClick={() => setShowConfirmDeleteModal(true)}
+                                icon={<BsTrash/>}/>
+
                     </div>
 
                     <div className={styles.userInfo}>
@@ -88,18 +89,19 @@ function ProfilePage() {
                         </div>
 
                         <div className={styles.buttonsContainer}>
-                            <button type={'submit'}
-                                    className={'btn btn-outline-success edit-btn'}
-                                    onClick={() => setShowChangePasswordModal(true)}>
-                                <MdPassword className={'icon'}/>
-                                Change password
-                            </button>
-                            <button type={'submit'}
-                                    className={'btn btn-success edit-btn'}
-                                    onClick={() => setShowUpdateUserModal(true)}>
-                                <BsPencil className={'icon'}/>
-                                Edit
-                            </button>
+
+                            <Button label={'Change password'}
+                                    type={ButtonType[3].type}
+                                    size={ButtonSize[1].size}
+                                    onClick={() => setShowChangePasswordModal(true)}
+                                    icon={<MdPassword/>}/>
+
+                            <Button label={'Edit'}
+                                    type={ButtonType[2].type}
+                                    size={ButtonSize[1].size}
+                                    onClick={() => setShowUpdateUserModal(true)}
+                                    icon={<BsPencil/>}/>
+
                         </div>
                     </div>
                 </div>

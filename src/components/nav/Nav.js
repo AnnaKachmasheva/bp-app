@@ -1,15 +1,14 @@
 import React, {Component, useState} from "react";
 import styles from './Nav.module.scss';
 import {AiOutlinePlus, AiOutlineSearch} from "react-icons/ai";
-import {routes} from "../../routes/Routes";
-import {Route, Routes} from "react-router-dom";
 import {BsQrCodeScan} from "react-icons/bs";
 import {PageTitles, QRScanLibraries} from "../../utils/Constants";
-import {ModalAddItem} from "./window-add-item/ModalAddItem";
-import {ModalAddUser} from "./window-add-user/ModalAddUser";
-import {ModalAddTag} from "./window-add-tag/ModalAddTag";
+import {ModalAddItem} from "../../pages/users-page/window-add-item/ModalAddItem";
+import {ModalAddUser} from "../../pages/users-page/window-add-user/ModalAddUser";
+import {ModalAddTag} from "../../pages/users-page/window-add-tag/ModalAddTag";
+import Button, {ButtonSize, ButtonType} from "../button/Button";
 
-const Nav = () => {
+const Nav = (props) => {
 
     const [showDropdownListLibraries, setShowDropdownListLibraries] = useState(false);
     const [showAddItem, setShowAddItem] = useState(false);
@@ -27,20 +26,23 @@ const Nav = () => {
     function renderAddButton(title) {
         switch (title) {
             case PageTitles.USERS:
-                return (<button onClick={() => setShowAddUser(true)}
-                                className={'btn btn-pr btn-success '.concat(styles.btnAdd)}>
-                    <AddButtonContent title={PageTitles.USERS}/>
-                </button>)
+                return (<Button type={ButtonType[0].type}
+                                size={ButtonSize[0].size}
+                                onClick={() => setShowAddUser(true)}
+                                label={<AddButtonContent title={PageTitles.USERS}/>}
+                                icon={<AiOutlinePlus/>}/>)
             case PageTitles.TAGS:
-                return (<button onClick={() => setShowAddTag(true)}
-                                className={'btn btn-pr btn-success '.concat(styles.btnAdd)}>
-                    <AddButtonContent title={PageTitles.TAGS}/>
-                </button>)
+                return (<Button type={ButtonType[0].type}
+                                size={ButtonSize[0].size}
+                                onClick={() => setShowAddTag(true)}
+                                label={<AddButtonContent title={PageTitles.TAGS}/>}
+                                icon={<AiOutlinePlus/>}/>)
             case PageTitles.ITEMS:
-                return (<button onClick={() => setShowAddItem(true)}
-                                className={'btn btn-pr btn-success '.concat(styles.btnAdd)}>
-                    <AddButtonContent title={PageTitles.ITEMS}/>
-                </button>)
+                return (<Button type={ButtonType[0].type}
+                                size={ButtonSize[0].size}
+                                onClick={() => setShowAddItem(true)}
+                                label={<AddButtonContent title={PageTitles.ITEMS}/>}
+                                icon={<AiOutlinePlus/>}/>)
             default:
                 return null;
         }
@@ -63,12 +65,10 @@ const Nav = () => {
                                        aria-describedby="basic-addon1"/>
                             </div>
 
-                            <button type={'submit'}
-                                    className={'btn btn-pr btn-outline-success '}
-                                    onClick={toggleDropdownListLibraries}>
-                                <BsQrCodeScan className={styles.icon}
-                                              size={22}/>
-                            </button>
+                            <Button type={ButtonType[3].type}
+                                    size={ButtonSize[2].size}
+                                    onClick={toggleDropdownListLibraries}
+                                    icon={<BsQrCodeScan/>}/>
                         </div>
 
                         {showDropdownListLibraries && (
@@ -95,19 +95,13 @@ const Nav = () => {
             <ModalAddTag onClose={() => setShowAddTag(false)}
                          show={showAddTag}/>
 
-            <Routes>
-                {routes.map(({path, title}) => (
-                    <Route key={path}
-                           path={path}
-                           element={
-                               <div className={styles.navBarContainer}>
-                                   <h4>{title()}</h4>
-                                   {renderSearchInput(title())}
-                                   {renderAddButton(title())}
-                               </div>
-                           }/>
-                ))}
-            </Routes>
+
+            <div className={styles.navBarContainer}>
+                <h4>{props.title}</h4>
+                {renderSearchInput(props.title)}
+                {renderAddButton(props.title)}
+            </div>
+
         </div>
     );
 };
@@ -131,11 +125,9 @@ class AddButtonContent extends Component {
         const itemToAdd = this.getItemToAdd();
 
         return (
-            <span>
-                <AiOutlinePlus className={styles.icon}
-                               size={22}/>
+            <div>
                 Add {itemToAdd}
-            </span>
+            </div>
         )
     }
 }

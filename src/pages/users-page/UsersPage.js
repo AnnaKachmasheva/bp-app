@@ -2,8 +2,10 @@ import React, {Component, useMemo, useState} from "react";
 import {RiDeleteBinLine} from "react-icons/ri";
 import {HiOutlinePencilAlt} from "react-icons/hi";
 import MOCK_DATA from "./MOCK_DATA.json"
-import {CountItems} from "../../utils/Constants";
+import {CountItems, PageTitles} from "../../utils/Constants";
 import Pagination from "../../components/pagination/Pagination";
+import Button, {ButtonSize, ButtonType} from "../../components/button/Button";
+import {AiOutlinePlus} from "react-icons/ai";
 
 function UsersPage() {
 
@@ -80,14 +82,15 @@ class TableRow extends Component {
                 <td>{this.props.user.userRole}</td>
                 <td>
                     <div className={'buttons-container'}>
-                        <button className={'btn btn-outline-success base-btn'}>
-                            <HiOutlinePencilAlt className={'icon'}/>
-                            Edit
-                        </button>
-                        <button className={'btn btn-outline-danger base-btn'}>
-                            <RiDeleteBinLine className={'icon'}/>
-                            Delete
-                        </button>
+                        <Button type={ButtonType[3].type}
+                                size={ButtonSize[0].size}
+                                label={'Edit'}
+                                icon={<HiOutlinePencilAlt/>}/>
+
+                        <Button type={ButtonType[5].type}
+                                size={ButtonSize[0].size}
+                                label={'Delete'}
+                                icon={<RiDeleteBinLine/>}/>
                     </div>
                 </td>
             </tr>

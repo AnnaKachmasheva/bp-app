@@ -1,8 +1,9 @@
 import React from "react";
-import HeaderModal from "../../modal/HeaderModal";
+import HeaderModal from "../../../components/modal/HeaderModal";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import * as Yup from "yup";
 import {UserRole} from "../../../utils/Constants";
+import Button, {ButtonSize, ButtonType} from "../../../components/button/Button";
 
 
 export const ModalAddUser = (props) => {
@@ -38,7 +39,7 @@ export const ModalAddUser = (props) => {
                     <Formik
                         initialValues={initialValues}
                         validationSchema={validationSchema}
-                    >
+                        onSubmit={console.log('new user')}>
                         {({
                               values,
                               errors,
@@ -90,7 +91,6 @@ export const ModalAddUser = (props) => {
                                     </div>
                                 </div>
 
-
                                 <div>
                                     <div className={'form-group'}>
                                         <label>Last name</label>
@@ -132,19 +132,13 @@ export const ModalAddUser = (props) => {
                 </div>
 
                 <div className={'buttons'}>
+                    <Button type={ButtonType[3].type}
+                            size={ButtonSize[1].size}
+                            label={'Cancel'}/>
 
-                    <button type={'submit'}
-                            className={'btn btn-outline-success edit-btn'}
-                            onClick={props.onClose}>
-                        Cancel
-                    </button>
-
-                    <button
-                        type={'submit'}
-                        className={'btn btn-primary edit-btn'}
-                        onSubmit={console.log('update')}>
-                        Save changes
-                    </button>
+                    <Button type={ButtonType[0].type}
+                            size={ButtonSize[1].size}
+                            label={'Save'}/>
                 </div>
 
             </div>
