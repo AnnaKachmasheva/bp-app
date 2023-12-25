@@ -1,0 +1,26 @@
+.formRow {
+  display: inline-flex;
+  gap: 20px;
+
+  button {
+    width: 100%;
+  }
+}
+
+.formColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+
+  overflow: auto;
+
+  span {
+    margin-top: 20px;
+    margin-bottom: -10px;
+    color: #1c7743;
+  }
+}
+
+.variant {
+  margin-bottom: 20px;
+}

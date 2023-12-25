@@ -26,7 +26,7 @@ button {
   height: fit-content;
 
   border-radius: 8px;
-  border: 2px solid;
+  border: 1px solid;
 
   .icon {
     width: auto;
@@ -38,12 +38,20 @@ button {
   }
 }
 
+button:disabled {
+  cursor: default;
+}
 
-// Primary
+// Primary btn
 .primary {
   background: $primary-btn-color;
   border-color: $primary-btn-color;
   color: $bg-color;
+}
+
+.primary:disabled, .primary:disabled:hover {
+  background: $primary-btn-color-disable;
+  border-color: $primary-btn-color-disable;
 }
 
 .primaryOutline {
@@ -69,7 +77,7 @@ button {
   color: $bg-color;
 }
 
-// Secondary
+// Secondary btn
 .secondary {
   background: $secondary-btn-color;
   border-color: $secondary-btn-color;
@@ -94,6 +102,7 @@ button {
   border-color: $secondary-btn-color-active;
 }
 
+// Danger btn
 .danger {
   background: $danger-btn-color;
   border-color: $danger-btn-color;
@@ -113,7 +122,7 @@ button {
 }
 
 .danger:not(:disabled):not(:disabled):active,
-.dangerOutline:not(:disabled):not(:disabled):active{
+.dangerOutline:not(:disabled):not(:disabled):active {
   background: $danger-btn-color-active;
   border-color: $danger-btn-color-active;
 }
@@ -125,7 +134,7 @@ button {
   color: $bg-color;
 }
 
-// size
+// sizes
 .small {
   font-size: 14px;
   padding: 6px 10px;

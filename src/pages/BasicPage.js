@@ -2,7 +2,6 @@ import Sidebar from "../components/sidebar/Sidebar";
 import Nav from "../components/nav/Nav";
 import React from "react";
 
-
 function BasicPage(props) {
 
     return (
@@ -15,6 +14,5 @@ function BasicPage(props) {
     )
 
 }
-
 
 export default BasicPage

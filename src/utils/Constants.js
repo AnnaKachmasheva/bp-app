@@ -1,7 +1,7 @@
 export const PageTitles = {
     USERS: 'Users',
     TAGS: 'Tags',
-    ITEMS: 'Items',
+    INVENTORY: 'Inventory',
     DASHBOARD: 'Dashboard',
     PROFILE: 'Profile'
 };

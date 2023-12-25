@@ -1,8 +1,8 @@
 import React from "react";
-import HeaderModal from "../../../components/modal/HeaderModal";
+import ModalWindow from "../../../components/modal/ModalWindow";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import * as Yup from "yup";
-import styles from './ModalEditProfile.module.scss';
+import Button, {ButtonSize, ButtonType} from "../../../components/button/Button";
 
 
 export const ModalEditProfile = (props) => {
@@ -23,38 +23,33 @@ export const ModalEditProfile = (props) => {
             .email('Invalid email')
     });
 
-    // const handleUpdateUser = async (e) => {
-    //     e.preventDefault();
-    //
-    //     try {
-    //         console.log('update user')
-    //         //todo update user, show alert and reload page
-    //     } catch (error) {
-    //         console.log('error - update user')
-    //     }
-    // }
+    const handleUpdateUser = async () => {
+        try {
+            alert("Update profile")
+            props.onClose(true)
+        } catch (error) {
+            console.log('error - update user')
+        }
+    }
 
-    return (
-        <div className={'modal'}
-             onClick={props.onClose}>
-            <div className={'content'}
-                 onClick={(e) => e.stopPropagation()}>
+    function getContent() {
+        return (
+            <div className={'modal-window-body'}>
 
-                <HeaderModal title={'Edit personal information'}/>
-
-                <div>
-                    <Formik
-                        initialValues={initialValues}
-                        validationSchema={validationSchema}
-                    >
-                        {({
-                              values,
-                              errors,
-                              touched,
-                          }) => (
-                            <Form className={styles.form}>
+                <Formik
+                    initialValues={initialValues}
+                    validationSchema={validationSchema}
+                    onSubmit={handleUpdateUser}>
+                    {({
+                          values,
+                          errors,
+                          touched,
+                          isValid
+                      }) => (
+                        <Form className={'form'}>
+                            <div>
                                 <div>
-                                    <div className={'form-group'}>
+                                    <div className={'form-input'}>
                                         <label>First name</label>
                                         <Field
                                             type={'text'}
@@ -69,7 +64,7 @@ export const ModalEditProfile = (props) => {
                                         />
                                     </div>
 
-                                    <div className={'form-group'}>
+                                    <div className={'form-input'}>
                                         <label>Last name</label>
                                         <Field
                                             type={'text'}
@@ -84,9 +79,8 @@ export const ModalEditProfile = (props) => {
                                         />
                                     </div>
                                 </div>
-
                                 <div>
-                                    <div className={'form-group'}>
+                                    <div className={'form-input'}>
                                         <label>Phone</label>
                                         <Field
                                             type={'phone'}
@@ -104,7 +98,7 @@ export const ModalEditProfile = (props) => {
                                         </div>
                                     </div>
 
-                                    <div className={'form-group'}>
+                                    <div className={'form-input'}>
                                         <label>Email address*</label>
                                         <Field
                                             type={'email'}
@@ -123,28 +117,30 @@ export const ModalEditProfile = (props) => {
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
-                            </Form>
-                        )}
-                    </Formik>
-                </div>
+                            <div className={'buttons'}>
+                                <Button type={ButtonType[3].type}
+                                        size={ButtonSize[1].size}
+                                        onClick={props.onClose}
+                                        label={'Cancel'}/>
 
-                <div className={'buttons'}>
-
-                    <button type={'submit'}
-                            className={'btn btn-outline-success edit-btn'}
-                            onClick={props.onClose}>
-                        Cancel
-                    </button>
-
-                    <button
-                    type={'submit'}
-                    className={'btn btn-primary edit-btn'}
-                    onSubmit={console.log('update')}>
-                    Save changes
-                </button>
-                </div>
+                                <Button type={ButtonType[0].type}
+                                        size={ButtonSize[1].size}
+                                        onClick={handleUpdateUser}
+                                        isDisabled={!isValid}
+                                        label={'Save changes'}/>
+                            </div>
+                        </Form>
+                    )}
+                </Formik>
             </div>
-        </div>
+        )
+    }
+
+    return (
+        <ModalWindow show={props.show}
+                     title={"Edit profile"}
+                     content={getContent()}/>
     )
 }

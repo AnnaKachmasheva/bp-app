@@ -6,6 +6,7 @@ import {RxDashboard} from "react-icons/rx";
 import {Link, useLocation, useNavigate} from "react-router-dom";
 import styles from './Sidebar.module.scss';
 import logo from '../../assets/logo_sidebar.png';
+import {PageTitles} from "../../utils/Constants";
 
 
 const Sidebar = (props) => {
@@ -16,23 +17,23 @@ const Sidebar = (props) => {
 
     const sidebarRows = [
         {
-            linkText: "Dashboard",
+            linkText: PageTitles.DASHBOARD,
             link: "/dashboard"
         },
         {
-            linkText: "Items",
-            link: "/items"
+            linkText: PageTitles.INVENTORY,
+            link: "/inventory"
         },
         {
-            linkText: "Tags",
+            linkText: PageTitles.TAGS,
             link: "/tags"
         },
         {
-            linkText: "Users",
+            linkText: PageTitles.USERS,
             link: "/users"
         },
         {
-            linkText: "Profile",
+            linkText: PageTitles.PROFILE,
             link: "/profile"
         },
     ];
@@ -44,7 +45,7 @@ const Sidebar = (props) => {
 
 
     return (
-        <div className={styles.sidebarContainer}>
+        <div className={styles.sidebarContainer.concat(' sidebar')}>
 
             <div className={styles.logoContainer}>
                 <img src={logo}
@@ -78,19 +79,19 @@ class SidebarRow extends Component {
     renderIcon = () => {
         // eslint-disable-next-line default-case
         switch (this.props.linkText) {
-            case 'Dashboard' :
+            case PageTitles.DASHBOARD :
                 return <RxDashboard className={styles.sidebarIcon}
                                     size={iconSizeSidebar}/>;
-            case 'Items' :
+            case PageTitles.INVENTORY :
                 return <BsListUl className={styles.sidebarIcon}
                                  size={iconSizeSidebar}/>;
-            case 'Tags' :
+            case PageTitles.TAGS:
                 return <BsTags className={styles.sidebarIcon}
                                size={iconSizeSidebar}/>;
-            case 'Users' :
+            case PageTitles.USERS :
                 return <PiUsers className={styles.sidebarIcon}
                                 size={iconSizeSidebar}/>;
-            case 'Profile' :
+            case PageTitles.PROFILE :
                 return <AiOutlineUser className={styles.sidebarIcon}
                                       size={iconSizeSidebar}/>;
         }

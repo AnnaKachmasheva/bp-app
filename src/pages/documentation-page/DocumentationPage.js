@@ -5,7 +5,7 @@ import {AiOutlineCheck} from "react-icons/ai";
 const DocumentationPage = () => {
 
     return (
-        <div>
+        <div className={'content'}>
             <div>
                 <Button label="Small Primary button"
                         type={ButtonType[0].type}

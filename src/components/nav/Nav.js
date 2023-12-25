@@ -1,14 +1,17 @@
-import React, {Component, useState} from "react";
+import React, {Component, useMemo, useState} from "react";
 import styles from './Nav.module.scss';
-import {AiOutlinePlus, AiOutlineSearch} from "react-icons/ai";
+import {AiOutlinePlus} from "react-icons/ai";
 import {BsQrCodeScan} from "react-icons/bs";
 import {PageTitles, QRScanLibraries} from "../../utils/Constants";
-import {ModalAddItem} from "../../pages/users-page/window-add-item/ModalAddItem";
 import {ModalAddUser} from "../../pages/users-page/window-add-user/ModalAddUser";
 import {ModalAddTag} from "../../pages/users-page/window-add-tag/ModalAddTag";
 import Button, {ButtonSize, ButtonType} from "../button/Button";
+import {ModalProduct} from "../../pages/inventory-page/modalWindowProduct/ModalProduct";
+import MOCK_DATA from "../../pages/inventory-page/MOCK_DATA.json";
 
 const Nav = (props) => {
+
+    const data = useMemo(() => MOCK_DATA, []);
 
     const [showDropdownListLibraries, setShowDropdownListLibraries] = useState(false);
     const [showAddItem, setShowAddItem] = useState(false);
@@ -27,21 +30,21 @@ const Nav = (props) => {
         switch (title) {
             case PageTitles.USERS:
                 return (<Button type={ButtonType[0].type}
-                                size={ButtonSize[0].size}
+                                size={ButtonSize[1].size}
                                 onClick={() => setShowAddUser(true)}
                                 label={<AddButtonContent title={PageTitles.USERS}/>}
                                 icon={<AiOutlinePlus/>}/>)
             case PageTitles.TAGS:
                 return (<Button type={ButtonType[0].type}
-                                size={ButtonSize[0].size}
+                                size={ButtonSize[1].size}
                                 onClick={() => setShowAddTag(true)}
                                 label={<AddButtonContent title={PageTitles.TAGS}/>}
                                 icon={<AiOutlinePlus/>}/>)
-            case PageTitles.ITEMS:
+            case PageTitles.INVENTORY:
                 return (<Button type={ButtonType[0].type}
-                                size={ButtonSize[0].size}
+                                size={ButtonSize[1].size}
                                 onClick={() => setShowAddItem(true)}
-                                label={<AddButtonContent title={PageTitles.ITEMS}/>}
+                                label={<AddButtonContent title={PageTitles.INVENTORY}/>}
                                 icon={<AiOutlinePlus/>}/>)
             default:
                 return null;
@@ -49,20 +52,20 @@ const Nav = (props) => {
     }
 
     function renderSearchInput(title) {
+        function handleContainerScanLibraries() {
+            setShowDropdownListLibraries(false);
+        }
+
         switch (title) {
-            case PageTitles.ITEMS:
+            case PageTitles.INVENTORY:
                 return (
                     <div>
                         <div className={styles.searchInput}>
                             <div className="input-group">
-                            <span className="input-group-text"
-                                  id="basic-addon1">
-                               <AiOutlineSearch/>
-                            </span>
+
                                 <input type="text"
-                                       className="form-control"
                                        placeholder="Search"
-                                       aria-describedby="basic-addon1"/>
+                                />
                             </div>
 
                             <Button type={ButtonType[3].type}
@@ -72,13 +75,20 @@ const Nav = (props) => {
                         </div>
 
                         {showDropdownListLibraries && (
-                            <ul className={styles.libraries}>
-                                {QRScanLibraries.map((library, index) =>
-                                    <li value={library.name}
-                                        onClick={handleScanQR(library.name)}>
-                                        {library.name} - Version {library.version}
-                                    </li>)}
-                            </ul>
+                            <div>
+                                <div className='container-list-options'
+                                     onClick={handleContainerScanLibraries}>
+                                </div>
+
+                                <ul className={styles.libraries}>
+                                    {QRScanLibraries.map((library, index) =>
+                                        <li value={library.name}
+                                            onClick={handleScanQR(library.name)}>
+                                            {library.name} - Version {library.version}
+                                        </li>)}
+                                </ul>
+                            </div>
+
                         )}
                     </div>)
             default:
@@ -88,16 +98,18 @@ const Nav = (props) => {
 
     return (
         <div>
-            <ModalAddItem onClose={() => setShowAddItem(false)}
+            <ModalProduct onClose={() => setShowAddItem(false)}
+                          title={"Add product"}
+                          categories={data.categories}
                           show={showAddItem}/>
+
             <ModalAddUser onClose={() => setShowAddUser(false)}
                           show={showAddUser}/>
             <ModalAddTag onClose={() => setShowAddTag(false)}
                          show={showAddTag}/>
 
-
-            <div className={styles.navBarContainer}>
-                <h4>{props.title}</h4>
+            <div className={styles.navBarContainer.concat(' nav')}>
+                <span>{props.title}</span>
                 {renderSearchInput(props.title)}
                 {renderAddButton(props.title)}
             </div>
@@ -114,7 +126,7 @@ class AddButtonContent extends Component {
                 return 'user'
             case PageTitles.TAGS:
                 return 'tag'
-            case PageTitles.ITEMS:
+            case PageTitles.INVENTORY:
                 return 'item'
             default:
                 return ''

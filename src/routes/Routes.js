@@ -1,6 +1,6 @@
 import React from "react";
 
-import ItemsPage from "../pages/items-page/ItemsPage";
+import InventoryPage from "../pages/inventory-page/InventoryPage";
 import DashboardPage from "../pages/dashboard-page/DashboardPage";
 import TagsPage from "../pages/tags-page/TagsPage";
 import UsersPage from "../pages/users-page/UsersPage";
@@ -17,9 +17,9 @@ export const routes = [
                                title={PageTitles.DASHBOARD}/>
     },
     {
-        path: "app/items",
-        main: () => <BasicPage page={<ItemsPage/>}
-                               title={PageTitles.ITEMS}/>
+        path: "app/inventory",
+        main: () => <BasicPage page={<InventoryPage/>}
+                               title={PageTitles.INVENTORY}/>
     },
     {
         path: "app/tags",

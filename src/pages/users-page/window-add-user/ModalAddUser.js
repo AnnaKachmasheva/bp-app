@@ -1,5 +1,5 @@
 import React from "react";
-import HeaderModal from "../../../components/modal/HeaderModal";
+import HeaderModal from "../../../components/modal/ModalWindow";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import * as Yup from "yup";
 import {UserRole} from "../../../utils/Constants";
@@ -27,6 +27,7 @@ export const ModalAddUser = (props) => {
 
 
     return (
+
         <div className={'modal'}
              onClick={props.onClose}>
 

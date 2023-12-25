@@ -1,19 +1,22 @@
 .navBarContainer {
+  width: calc(100vw - 300px - 6vw);
+  margin-left: 240px;
+  padding: 0 6vw;
+  height: 64px;
+
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  padding: 2vh 0 2vh 300px;
-  width: 100%;
-  height: 68px;
 
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
   color: #828282;
   font-weight: normal;
 
-  h4 {
+  span {
     font-weight: normal;
+    font-size: 1.2em;
   }
 
   .searchInput {
@@ -29,10 +32,16 @@
 }
 
 .libraries {
+  z-index: 6;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+
+  margin-top: 0;
+  margin-left: 234px;
+
   position: absolute;
-  margin-top: 160px;
-  margin-left: 42vw;
-  margin-right: auto;
   padding: 5px;
 
   background: white;

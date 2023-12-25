@@ -2,10 +2,9 @@ import React, {Component, useMemo, useState} from "react";
 import {RiDeleteBinLine} from "react-icons/ri";
 import {HiOutlinePencilAlt} from "react-icons/hi";
 import MOCK_DATA from "./MOCK_DATA.json"
-import {CountItems, PageTitles} from "../../utils/Constants";
+import {CountItems} from "../../utils/Constants";
 import Pagination from "../../components/pagination/Pagination";
 import Button, {ButtonSize, ButtonType} from "../../components/button/Button";
-import {AiOutlinePlus} from "react-icons/ai";
 
 function UsersPage() {
 
@@ -19,6 +18,9 @@ function UsersPage() {
 
     return (
         <div className={'content'}>
+
+
+
             <div className={'panel'}>
                 <table>
                     <thead>

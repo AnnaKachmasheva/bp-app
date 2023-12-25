@@ -1,0 +1,232 @@
+{
+  "categories": [
+    {
+      "name": "Electronics",
+      "items": [
+        {
+          "id": 1,
+          "name": "Laptop",
+          "description": "Powerful laptop with high-performance specs.",
+          "datetime": "2023-12-24T08:30:00",
+          "variants": [
+            {
+              "id": 101,
+              "color": "Silver",
+              "storage": "512GB SSD",
+              "price": 1099.99,
+              "minQuantity": 100,
+              "quantity": 1000,
+              "photo": "laptop_silver.jpg"
+            },
+            {
+              "id": 102,
+              "color": "Space Gray",
+              "storage": "1TB SSD",
+              "price": 1299.99,
+              "minQuantity": 80,
+              "quantity": 800,
+              "photo": "laptop_space_gray.jpg"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Smartphone",
+          "description": "Latest smartphone with advanced features.",
+          "datetime": "2023-12-25T12:45:00",
+          "variants": [
+            {
+              "id": 201,
+              "color": "Black",
+              "storage": "128GB",
+              "price": 599.99,
+              "minQuantity": 50,
+              "quantity": 500,
+              "photo": "smartphone_black.jpg"
+            },
+            {
+              "id": 202,
+              "color": "White",
+              "storage": "256GB",
+              "price": 699.99,
+              "minQuantity": 30,
+              "quantity": 300,
+              "photo": "smartphone_white.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Clothing",
+      "items": [
+        {
+          "id": 1,
+          "name": "T-Shirt",
+          "description": "Comfortable cotton T-shirt in various colors.",
+          "datetime": "2023-12-27T10:00:00",
+          "variants": [
+            {
+              "id": 101,
+              "size": "Small",
+              "color": "Blue",
+              "price": 29.99,
+              "minQuantity": 100,
+              "quantity": 1000,
+              "photo": "tshirt_blue.jpg"
+            },
+            {
+              "id": 102,
+              "size": "Medium",
+              "color": "Red",
+              "price": 29.99,
+              "minQuantity": 80,
+              "quantity": 800,
+              "photo": "tshirt_red.jpg"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Jeans",
+          "description": "Classic denim jeans for a stylish look.",
+          "datetime": "2023-12-28T14:20:00",
+          "variants": [
+            {
+              "id": 201,
+              "size": "32x30",
+              "color": "Dark Blue",
+              "price": 49.99,
+              "minQuantity": 30,
+              "quantity": 300,
+              "photo": "jeans_dark_blue.jpg"
+            },
+            {
+              "id": 202,
+              "size": "34x32",
+              "color": "Light Blue",
+              "price": 49.99,
+              "minQuantity": 20,
+              "quantity": 200,
+              "photo": "jeans_light_blue.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Books",
+      "items": [
+        {
+          "id": 1,
+          "name": "The Great Gatsby",
+          "description": "Classic novel depicting the roaring twenties.",
+          "datetime": "2024-01-01T09:15:00",
+          "variants": [
+            {
+              "id": 101,
+              "format": "Paperback",
+              "author": "F. Scott Fitzgerald",
+              "price": 12.99,
+              "minQuantity": 50,
+              "quantity": 500,
+              "photo": "gatsby_paperback.jpg"
+            },
+            {
+              "id": 102,
+              "format": "Hardcover",
+              "author": "F. Scott Fitzgerald",
+              "price": 24.99,
+              "minQuantity": 30,
+              "quantity": 300,
+              "photo": "gatsby_hardcover.jpg"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "To Kill a Mockingbird",
+          "description": "Compelling story addressing racial injustice.",
+          "datetime": "2024-01-02T13:30:00",
+          "variants": [
+            {
+              "id": 201,
+              "format": "E-book",
+              "author": "Harper Lee",
+              "price": 9.99,
+              "minQuantity": 40,
+              "quantity": 400,
+              "photo": "mockingbird_ebook.jpg"
+            },
+            {
+              "id": 202,
+              "format": "Audiobook",
+              "author": "Harper Lee",
+              "price": 19.99,
+              "minQuantity": 20,
+              "quantity": 200,
+              "photo": "mockingbird_audiobook.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kitchen Appliances",
+      "items": [
+        {
+          "id": 1,
+          "name": "Coffee Maker",
+          "description": "Brew your favorite coffee at home.",
+          "datetime": "2024-01-03T11:45:00",
+          "variants": [
+            {
+              "id": 101,
+              "type": "Drip Coffee Maker",
+              "brand": "BrewMaster",
+              "price": 49.99,
+              "minQuantity": 30,
+              "quantity": 300,
+              "photo": "coffee_maker_drip.jpg"
+            },
+            {
+              "id": 102,
+              "type": "Espresso Machine",
+              "brand": "EspressoElite",
+              "price": 149.99,
+              "minQuantity": 15,
+              "quantity": 150,
+              "photo": "coffee_maker_espresso.jpg"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Blender",
+          "description": "Create delicious smoothies and shakes.",
+          "datetime": "2024-01-04T14:00:00",
+          "variants": [
+            {
+              "id": 201,
+              "power": "500W",
+              "brand": "SmoothBlend",
+              "price": 39.99,
+              "minQuantity": 40,
+              "quantity": 400,
+              "photo": "blender_500w.jpg"
+            },
+            {
+              "id": 202,
+              "power": "1000W",
+              "brand": "PowerCrush",
+              "price": 69.99,
+              "minQuantity": 25,
+              "quantity": 250,
+              "photo": "blender_1000w.jpg"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

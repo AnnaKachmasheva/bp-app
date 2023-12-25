@@ -1,7 +1,7 @@
 import React from "react";
 import styles from './Button.module.scss';
 
-const Button = ({onClick, label, type, size, icon}) => {
+const Button = ({onClick, label, type, size, icon, isDisabled}) => {
     const handleClick = () => {
         if (onClick) {
             onClick();
@@ -16,7 +16,8 @@ const Button = ({onClick, label, type, size, icon}) => {
 
     return (
         <button className={getButtonType()}
-                onClick={handleClick}>
+                onClick={handleClick}
+                disabled={isDisabled}>
             {icon && React.cloneElement(icon, {className: 'button-icon'})}
             {label}
         </button>
@@ -32,7 +33,6 @@ export const ButtonType = [
     {type: 'secondaryOutline', style: styles.secondaryOutline},
     {type: 'danger', style: styles.danger},
     {type: 'dangerOutline', style: styles.dangerOutline}
-
 ]
 
 export const ButtonSize = [

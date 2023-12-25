@@ -3,17 +3,17 @@ import ModalWindow from "../../../components/modal/ModalWindow";
 import Button, {ButtonSize, ButtonType} from "../../../components/button/Button";
 
 
-export const ModalDeleteProfileConfirm = (props) => {
+export const ModalDeleteProductConfirm = (props) => {
     if (!props.show)
         return null;
 
-    const handleDeleteAccount = async () => {
+    const handleDeleteProduct = async () => {
 
         try {
-            alert("Delete profile")
+            alert("Delete product")
             props.onClose(true)
         } catch (error) {
-            console.log('error - delete profile')
+            console.log('error - delete product')
         }
     }
 
@@ -21,7 +21,7 @@ export const ModalDeleteProfileConfirm = (props) => {
         return (
             <div className={'modal-window-body'}>
 
-                <p>Are you sure you want to delete your account?</p>
+                <p>Are you sure you want to delete this product?</p>
 
                 <div className={'buttons'}>
                     <Button type={ButtonType[3].type}
@@ -31,8 +31,8 @@ export const ModalDeleteProfileConfirm = (props) => {
 
                     <Button type={ButtonType[0].type}
                             size={ButtonSize[1].size}
-                            onClick={handleDeleteAccount}
-                            label={'Delete account'}/>
+                            onClick={handleDeleteProduct}
+                            label={'Delete'}/>
                 </div>
             </div>
         )
@@ -40,7 +40,7 @@ export const ModalDeleteProfileConfirm = (props) => {
 
     return (
         <ModalWindow show={props.show}
-                     title={"Delete profile"}
+                     title={"Delete product"}
                      content={getContent()}/>
     )
 }

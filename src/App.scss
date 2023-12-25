@@ -1,9 +1,11 @@
 $text-color: #000000;
+$bg-color: white;
+
 $btn-width: 120px;
 $btn-height: 40px;
 $block-padding: 60px;
 
-$primary-btn-color: #F2994A;
+$primary-btn-color: #4a96f2;
 $primary-btn-color-active: #c05700;
 $primary-btn-color-hover: #f1811c;
 $primary-btn-color-disable: rgba(241, 129, 28, 0.5);
@@ -18,67 +20,153 @@ $mediaBp1Width: 960px;
 $mediaMinWidth: 480px;
 
 
-// BUTTONS
-//.btn-primary {
-//  background: $primary-btn-color;
-//  border: 0;
-//}
-//
-//.btn-primary:hover {
-//  background: $primary-btn-color-hover;
-//}
-//
-//.btn-primary:not(:disabled):not(:disabled):active {
-//  background: $primary-btn-color-active;
-//}
+// main
+.main {
+  display: grid;
+  height: 100%;
+  width: 100%;
 
-//.base-btn {
-//  display: inline-flex;
-//  align-items: center;
-//  justify-content: center;
-//
-//  height: 2.5em;
-//
-//  .icon {
-//    width: auto;
-//    margin: 0 10px;
-//  }
-//
-//  span {
-//    width: 130px;
-//  }
-//}
-//
-//.buttons {
-//  display: inline-flex;
-//
-//  button {
-//    width: 100%;
-//  }
-//}
+  grid-template-columns: 300px auto;
+  grid-template-rows: auto auto;
 
+  justify-items: stretch;
+
+  grid-template-areas:
+    "sidebar nav"
+    "sidebar main-content"
+}
+
+.sidebar {
+  grid-area: sidebar;
+  position: fixed;
+  z-index: 101;
+}
+
+.nav {
+  grid-area: nav;
+  position: fixed;
+  z-index: 100;
+  background: $bg-color;
+}
+
+.content {
+  grid-area: main-content;
+  align-self: start;
+  padding-top: 80px;
+  margin-right: 3vw;
+}
+
+// tables
+
+table {
+  border-collapse: collapse;
+
+  thead {
+    background: #F2F2F2;
+    font-weight: normal;
+    text-align: center;
+  }
+
+  td {
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+
+  th {
+    border-top: none;
+  }
+
+  th {
+    border-top: none;
+  }
+
+  td:first-child,
+  th:first-child {
+    border-left: none;
+  }
+
+  td:last-child,
+  th:last-child {
+    border-right: none;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  .column-action {
+    width: 50px;
+    text-align: center;
+  }
+}
+
+thead, tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+
+// info about table
+.total {
+  display: inline-flex;
+  justify-content: flex-end;
+  gap: 20px;
+  width: 100%;
+
+  span {
+    font-weight: lighter;
+  }
+}
+
+// lists
 ul {
   list-style-type: none;
 }
 
-// CARDS
-.card-title-container {
+.container-list-options {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  display: inline-flex;
-  align-items: center;
+  height: 100vh;
 
-  p {
-    font-size: 1.6em;
-  }
-
-  //button {
-  //  max-width: fit-content;
-  //  margin-left: auto;
-  //}
+  background: none;
+  z-index: 5;
 }
 
-// MODAL WINDOWS
+.options-list {
+  z-index: 6;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  padding: 20px;
+  margin-left: -70px;
+  margin-top: 0;
+
+  background: $bg-color;
+  border-radius: 6px;
+  border: 1px solid $grey-color;
+  box-shadow: 0 0 6px $grey-color;
+
+  li {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    cursor: pointer;
+  }
+
+  li:hover {
+    color: $green-color;
+  }
+}
+
+// modal window
 .modal {
+  z-index: 1000;
   position: fixed;
   display: flex;
   justify-content: center;
@@ -89,188 +177,142 @@ ul {
   right: 0;
   bottom: 0;
 
-  z-index: 100;
-
   background-color: rgba(0, 0, 0, 0.7);
 
-  .content {
-    width: 35%;
-    height: auto;
+  .modal-header {
+    font-size: 1.6em;
+  }
 
+  .modal-subtitle {
+    padding-top: 30px;
+    font-size: 1.1em;
+  }
+
+  .modal-header, .modal-subtitle {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 10px;
+    margin: 0;
+  }
+
+  .modal-window-content {
     display: flex;
     flex-direction: column;
+    max-height: 90vh;
 
-    padding: 3vh;
+    text-align: left;
 
-    background-color: white;
+    background: $bg-color;
+    padding: 30px;
 
-    border: 1px solid rgba(0, 0, 0, 0.22);
-    box-sizing: border-box;
-    box-shadow: 3px 4px 15px -1px rgba(0, 0, 0, 0.3);
-    border-radius: 5px;
+    border-radius: 12px;
+  }
 
-    .header {
-      flex-basis: 10%;
+  .modal-window-body {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    padding: 0 20px;
+  }
 
-      font-size: 1.6em;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    }
-
-    .body {
-      margin: 3vh 0;
-    }
-
-    //.buttons {
-    //  display: inline-flex;
-    //  gap: 3vw;
-    //}
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 30px;
   }
 }
+
+// form
+.form {
+  .form-input {
+    display: flex;;
+    flex-direction: column;
+    margin-top: 20px;
+    width: 100%;
+
+    label {
+      font-size: 0.9em;
+    }
+
+    select {
+      margin: 0;
+    }
+  }
+}
+
+input, .label, select, textarea {
+  padding: 10px;
+  border: 1px solid $green-color;
+  border-radius: 8px;
+}
+
+.label {
+  color: $green-color;
+  padding: 8px;
+  font-weight: normal;
+}
+
+.label:hover {
+  box-shadow: 0 0 4px $green-color;
+}
+
+.label {
+  display: inline-flex;
+  align-items: flex-end;
+  align-content: center;
+
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+input:focus, textarea:focus, select:focus {
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  border-color: rgb(0, 123, 255);
+  outline: none;
+}
+
+/* Style for disabled input */
+input:disabled {
+  background-color: #f8f9fa;
+  color: #6c757d;
+  cursor: not-allowed;
+}
+
+.invalid-feedback {
+  color: #d52537;
+  font-size: 0.8em;
+}
+
+.is-invalid {
+  border-color: #d52537;
+}
+
+.is-valid {
+  border-color: $green-color;
+}
+
+
+.select {
+  display: flex;
+  flex-direction: column;
+
+  select {
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid $green-color;
+  }
+}
+
 
 .reader {
   height: 50vh;
   width: 50vw;
 }
 
-// todo change it
-.main-container {
-
-}
-
-.content {
-  margin-left: 300px;
-  margin-right: 50px;
-}
 
 // pagination
 .container-pagination {
   display: inline-flex;
   width: 100%;
-}
-
-
-// panel with table
-.panel {
-  width: auto;
-  height: auto;
-
-  margin: 5vh 0;
-  padding: 20px;
-
-  font-size: 1em;
-
-  border-radius: 4px;
-  border: 1px solid rgba(0, 0, 0, 0.10);
-  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.10);
-
-  table {
-
-    thead {
-      background: #F2F2F2;
-      font-weight: normal;
-
-      td {
-        padding: 20px;
-      }
-    }
-
-    .checkbox-container {
-      width: 60px;
-      padding: 20px 0;
-    }
-
-    td {
-      border: 1px solid #CCCCCC;
-      padding: 10px;
-
-      p {
-        margin: 0;
-        padding: 0;
-
-        font-size: 0.9em;
-      }
-    }
-
-    //.buttons-container {
-    //  display: flex;
-    //
-    //  button {
-    //    margin: 0 10px;
-    //  }
-    //}
-
-    .column-action {
-      width: 100px;
-
-      //button {
-      //  border: none;
-      //  background: none;
-      //
-      //  .icon {
-      //    color: #828282;
-      //  }
-      //}
-
-      //button:hover {
-      //  .icon {
-      //    color: black;
-      //  }
-      //}
-    }
-
-    .empty-column {
-      width: 50px;
-    }
-  }
-
-  thead, tbody tr {
-    display: table;
-    width: 100%;
-
-    table-layout: fixed;
-  }
-
-  tr, td {
-    text-align: center;
-  }
-
-  .total {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-
-
-    p {
-      margin: 1vh 1vw;
-      font-size: 1.2rem;
-      color: #828282;
-
-      span {
-        color: black;
-      }
-    }
-
-  }
-}
-
-.form {
-  display: flex;
-  flex-direction: row;
-  gap: 2vw;
-  margin: 1vh 0;
-
-  .form-group {
-    margin: 2vh 0;
-  }
-
-  .select {
-    display: flex;
-    flex-direction: column;
-
-    select {
-      height: 40px;
-      border-radius: 4px;
-      border: 1px solid $green-color;
-    }
-  }
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import HeaderModal from "../../../components/modal/HeaderModal";
+import HeaderModal from "../../../components/modal/ModalWindow";
 
 
 export const ModalEditPassword = (props) => {
