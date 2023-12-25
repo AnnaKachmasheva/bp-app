@@ -26,6 +26,13 @@
   .infoColumn {
     display: flex;
     flex-direction: row;
+    margin-left: 10vw;
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      padding: 0 10px;
+    }
   }
 
   .labels {
@@ -41,6 +48,7 @@
 
     button {
       margin-top: 2vh;
+      width: 100%;
     }
   }
 }

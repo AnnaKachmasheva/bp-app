@@ -167,7 +167,9 @@ ul {
 // modal window
 .modal {
   z-index: 1000;
+
   position: fixed;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -198,6 +200,7 @@ ul {
     display: flex;
     flex-direction: column;
     max-height: 90vh;
+    min-width: 50vw;
 
     text-align: left;
 
@@ -219,12 +222,14 @@ ul {
     flex-direction: row;
     justify-content: flex-end;
     gap: 10px;
-    margin-top: 30px;
+    margin-top: 40px;
   }
 }
 
+
 // form
 .form {
+
   .form-input {
     display: flex;;
     flex-direction: column;
@@ -237,6 +242,41 @@ ul {
 
     select {
       margin: 0;
+    }
+  }
+
+  .buttons {
+    display: inline-flex;
+    gap: 20px;
+    width: 100%;
+
+    button {
+      width: 100%;
+    }
+  }
+
+  .form-row {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+
+    button {
+      width: 100%;
+    }
+
+  }
+
+  .form-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+
+    overflow: auto;
+
+    span {
+      margin-top: 20px;
+      margin-bottom: -10px;
+      color: #1c7743;
     }
   }
 }
@@ -315,4 +355,12 @@ input:disabled {
 .container-pagination {
   display: inline-flex;
   width: 100%;
+}
+
+// card
+.card-title-container {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between
 }

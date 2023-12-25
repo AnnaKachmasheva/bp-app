@@ -41,6 +41,7 @@ function ProfilePage() {
                                        show={showConfirmDeleteModal}/>
 
             <ModalEditPassword onClose={() => setShowChangePasswordModal(false)}
+                               email={user.email}
                                show={showChangePasswordModal}/>
 
             <ModalEditProfile onClose={() => setShowUpdateUserModal(false)}
@@ -50,7 +51,6 @@ function ProfilePage() {
                               email={user.email}
                               phone={user.phone}
             />
-
 
             <div className={styles.userProfile}>
                 <div className={'card-title-container'}>

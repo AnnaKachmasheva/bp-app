@@ -64,8 +64,8 @@ export const ModalProduct = (props) => {
                         <Form className={'form'}>
 
                             {/* main info */}
-                            <div className={styles.formColumn}>
-                                <div className={styles.formRow}>
+                            <div className={'form-column'}>
+                                <div className={'form-row'}>
                                     <div className={'form-input'}>
                                         <label>Category</label>
                                         <Field as="select"
@@ -93,7 +93,7 @@ export const ModalProduct = (props) => {
                                     </div>
                                 </div>
 
-                                <div className={styles.formRow}>
+                                <div className={'form-row'}>
                                     <div className={'form-input'}>
                                         <label>Description</label>
                                         <Field className={'form-control'}
@@ -107,7 +107,7 @@ export const ModalProduct = (props) => {
                                 </div>
 
                                 {/*variants*/}
-                                <p className={'modal-subtitle '.concat(styles.formRow)}>Variants</p>
+                                <p className={'modal-subtitle '.concat('form-row')}>Variants</p>
 
                                 // todo
                                 {/*{Array.from({length: numberVariants}, (_, index) => index)*/}
@@ -160,7 +160,7 @@ export const ModalProduct = (props) => {
                                 {/*    )}*/}
 
 
-                                <div className={styles.formRow}>
+                                <div className={'form-row'}>
                                     <Button type={ButtonType[3].type}
                                             onClick={() => handleAddAttribute()}
                                             size={ButtonSize[1].size}

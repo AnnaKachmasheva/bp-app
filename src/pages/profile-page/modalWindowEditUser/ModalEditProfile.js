@@ -47,8 +47,8 @@ export const ModalEditProfile = (props) => {
                           isValid
                       }) => (
                         <Form className={'form'}>
-                            <div>
-                                <div>
+                            <div className={'form-column'}>
+                                <div className={'form-row'}>
                                     <div className={'form-input'}>
                                         <label>First name</label>
                                         <Field
@@ -79,7 +79,8 @@ export const ModalEditProfile = (props) => {
                                         />
                                     </div>
                                 </div>
-                                <div>
+
+                                <div className={'form-row'}>
                                     <div className={'form-input'}>
                                         <label>Phone</label>
                                         <Field
