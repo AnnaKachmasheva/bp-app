@@ -8,6 +8,7 @@ import ProfilePage from "../pages/profile-page/ProfilePage";
 import {PageTitles} from "../utils/Constants";
 import DocumentationPage from "../pages/documentation-page/DocumentationPage";
 import BasicPage from "../pages/BasicPage";
+import BarcodeDetector from "../components/scanner/window-scan-QR/detector/BarcodeDetector";
 
 
 export const routes = [
@@ -39,5 +40,10 @@ export const routes = [
     {
         path: "documentation",
         main: () => <DocumentationPage/>
+    },
+    {
+        path: "barcodedetector",
+        main: () => <BarcodeDetector/>
     }
+
 ];

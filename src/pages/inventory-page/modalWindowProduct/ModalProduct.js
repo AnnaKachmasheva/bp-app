@@ -1,9 +1,10 @@
-import React from "react";
+import React, {Component} from "react";
 import ModalWindow from "../../../components/modal/ModalWindow";
 import Button, {ButtonSize, ButtonType} from "../../../components/button/Button";
 import {Field, Form, Formik} from "formik";
 import * as Yup from "yup";
 import styles from './ModalProduct.module.scss';
+import {FaPlus} from "react-icons/fa";
 
 
 // create/update/clone product
@@ -20,6 +21,10 @@ export const ModalProduct = (props) => {
         } catch (error) {
             console.log('error - save product')
         }
+    }
+
+    function addCategory() {
+
     }
 
     function getForm(props) {
@@ -39,14 +44,37 @@ export const ModalProduct = (props) => {
             //todo
         }
 
-        let numberVariants = 1
+        let numberVariants = 1;
 
-        function handleAddVariant() {
+        function addVariant() {
             numberVariants += 1
         }
 
-        function handleAddAttribute() {
+        const attributes = [];
 
+        let numberAttributes = 0;
+
+        function renderVariants() {
+            const variants = [];
+
+            for (let i = 0; i < numberVariants; i++) {
+                variants.push(<VariantForm number={i}
+                                           numberAttributes={numberAttributes}/>);
+            }
+
+            return variants;
+        }
+
+        let isAddAttributeFormShow = false;
+
+        function handleAddAttribute() {
+            isAddAttributeFormShow = true;
+        }
+
+        function renderAddAttributeForm() {
+            if (isAddAttributeFormShow) {
+                return <AttributeForm/>
+            }
         }
 
         return (
@@ -66,17 +94,6 @@ export const ModalProduct = (props) => {
                             {/* main info */}
                             <div className={'form-column'}>
                                 <div className={'form-row'}>
-                                    <div className={'form-input'}>
-                                        <label>Category</label>
-                                        <Field as="select"
-                                               id="category"
-                                               className={'form-control'}
-                                               name="category">
-                                            {props.categories.map(category =>
-                                                <option value={category.name}>{category.name}</option>
-                                            )}
-                                        </Field>
-                                    </div>
 
                                     <div className={'form-input'}>
                                         <label>Name</label>
@@ -90,6 +107,25 @@ export const ModalProduct = (props) => {
                                                placeholder={'Enter name'}
                                                name={'name'}
                                         />
+                                    </div>
+
+                                    <div className={styles.categoryWithAddBtn}>
+                                        <div className={'form-input'}>
+                                            <label>Category</label>
+                                            <Field as="select"
+                                                   id="category"
+                                                   className={'form-control'}
+                                                   name="category">
+                                                {props.categories.map(category =>
+                                                    <option value={category.name}>{category.name}</option>
+                                                )}
+                                            </Field>
+                                        </div>
+
+                                        <Button type={ButtonType[3].type}
+                                                onClick={() => addCategory()}
+                                                size={ButtonSize[1].size}
+                                                icon={<FaPlus/>}/>
                                     </div>
                                 </div>
 
@@ -109,65 +145,21 @@ export const ModalProduct = (props) => {
                                 {/*variants*/}
                                 <p className={'modal-subtitle '.concat('form-row')}>Variants</p>
 
-                                // todo
-                                {/*{Array.from({length: numberVariants}, (_, index) => index)*/}
-                                {/*    .map((index) =>*/}
+                                {renderVariants()}
 
-                                {/*        <div className={styles.formColumn.concat(' '.concat(styles.variant))}>*/}
+                                {renderAddAttributeForm()}
 
-                                {/*            <div className={styles.formRow}>*/}
-                                {/*                <div className={'form-input'}>*/}
-                                {/*                    <label>Quantity</label>*/}
-                                {/*                    <Field*/}
-                                {/*                        type={'number'}*/}
-                                {/*                        step={1}*/}
-                                {/*                        className={'form-control'}*/}
-                                {/*                        placeholder={'Enter quantity'}*/}
-                                {/*                        name={'quantity'}*/}
-                                {/*                        required*/}
-                                {/*                    />*/}
-                                {/*                </div>*/}
+                                <div className={styles.buttonContainer}>
 
-                                {/*                <div className={'form-input'}>*/}
-                                {/*                    <label>Min quantity</label>*/}
-                                {/*                    <Field*/}
-                                {/*                        type={'number'}*/}
-                                {/*                        step={1}*/}
-                                {/*                        className={'form-control'}*/}
-                                {/*                        placeholder={'Enter min quantity'}*/}
-                                {/*                        name={'minQuantity'}*/}
-                                {/*                        required*/}
-                                {/*                    />*/}
-                                {/*                </div>*/}
-                                {/*            </div>*/}
-
-                                {/*            <div className={styles.formRow}>*/}
-                                {/*                <div className={'form-input'}>*/}
-                                {/*                    <label>Price</label>*/}
-                                {/*                    <Field*/}
-                                {/*                        type={'number'}*/}
-                                {/*                        step={0.1}*/}
-                                {/*                        className={'form-control'}*/}
-                                {/*                        placeholder={'Enter price'}*/}
-                                {/*                        name={'price'}*/}
-                                {/*                        required*/}
-                                {/*                    />*/}
-                                {/*                </div>*/}
-                                {/*                <div className={'form-input'}></div>*/}
-                                {/*            </div>*/}
-
-                                {/*        </div>*/}
-                                {/*    )}*/}
-
-
-                                <div className={'form-row'}>
-                                    <Button type={ButtonType[3].type}
-                                            onClick={() => handleAddAttribute()}
-                                            size={ButtonSize[1].size}
-                                            label={'Add attribute'}/>
+                                    {!isAddAttributeFormShow ?
+                                        <Button type={ButtonType[3].type}
+                                                onClick={() => handleAddAttribute()}
+                                                size={ButtonSize[1].size}
+                                                label={'Add attribute'}/> : null
+                                    }
 
                                     <Button type={ButtonType[3].type}
-                                            onClick={() => handleAddVariant()}
+                                            onClick={() => addVariant()}
                                             size={ButtonSize[1].size}
                                             label={'Add variant'}/>
                                 </div>
@@ -197,4 +189,111 @@ export const ModalProduct = (props) => {
                      title={props.title}
                      content={getForm(props)}/>
     )
+}
+
+class VariantForm extends Component {
+
+    render() {
+        return (
+            <div className={'form-column '.concat(' '.concat(styles.variant))}>
+
+                <div className={'form-row'}>
+                    <div className={'form-input'}>
+                        <label>Quantity</label>
+                        <Field
+                            type={'number'}
+                            step={1}
+                            className={'form-control'}
+                            placeholder={'Enter quantity'}
+                            name={'quantity'.concat(this.props.number)}
+                            required
+                        />
+                    </div>
+
+                    <div className={'form-input'}>
+                        <label>Min quantity</label>
+                        <Field
+                            type={'number'}
+                            step={1}
+                            className={'form-control'}
+                            placeholder={'Enter min quantity'}
+                            name={'minQuantity'.concat(this.props.number)}
+                            required
+                        />
+                    </div>
+                </div>
+
+                <div className={'form-row'}>
+                    <div className={'form-input'}>
+                        <label>Price</label>
+                        <Field
+                            type={'number'}
+                            step={0.1}
+                            className={'form-control'}
+                            placeholder={'Enter price'}
+                            name={'price'.concat(this.props.number)}
+                            required
+                        />
+                    </div>
+                    <div className={'form-input'}></div>
+
+                </div>
+
+                {/*{renderAttributes()}*/}
+
+            </div>
+        )
+    }
+
+}
+
+
+class AttributeForm extends Component {
+    render() {
+        function handleAddAttribute() {
+            // TODO
+            // this.props.addAttribute()
+        }
+
+        return (
+            <div className={'form-column '.concat(' '.concat(styles.attributeForm))}>
+
+                {/*TODO ADD STYLES*/}
+                <p>New attribute</p>
+
+                <div className={'form-row'}>
+
+                    <div className={'form-input'}>
+                        <label>Name</label>
+                        <Field
+                            type={'text'}
+                            className={'form-control'}
+                            placeholder={'Attribute name'}
+                            name={'attrName'}
+                            required
+                        />
+                    </div>
+
+                    <div className={'form-input'}>
+                        <label>Value</label>
+                        <Field
+                            type={'text'}
+                            className={'form-control'}
+                            placeholder={'Attribute value'}
+                            name={'attrValue'}
+                            required
+                        />
+                    </div>
+                </div>
+
+                <div className={'form-row '}>
+                    <Button type={ButtonType[2].type}
+                            size={ButtonSize[1].size}
+                            onClick={() => handleAddAttribute()}
+                            label={'Add attribute'}/>
+                </div>
+
+            </div>
+        )
+    }
 }

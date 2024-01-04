@@ -1,3 +1,46 @@
 .variant {
   margin-bottom: 20px;
 }
+
+.attributeForm {
+  background-color: rgba(173, 173, 173, 0.68);
+  border-radius: 6px;
+
+  padding: 20px;
+  margin: 2vh 0;
+
+  color: white;
+
+  button {
+    margin-top: 2vh;
+    margin-bottom: 1vh;
+  }
+
+  p {
+    padding: 0;
+    margin: 0;
+
+    font-size: 1.2rem;
+  }
+}
+
+.categoryWithAddBtn {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 10px;
+  width: 100%;
+
+  button {
+    width: auto;
+  }
+}
+
+.buttonContainer {
+  display: inline-flex;
+  justify-content: flex-end;
+
+  button {
+    width: 100%;
+  }
+}
+

@@ -1,0 +1,27 @@
+{
+  "id": 1,
+  "name": "Laptop",
+  "category": "Electronics",
+  "description": "Powerful laptop with high-performance specs.",
+  "datetime": "2023-12-24T08:30:00",
+  "variants": [
+    {
+      "id": 101,
+      "color": "Silver",
+      "storage": "512GB SSD",
+      "price": 1099.99,
+      "minQuantity": 100,
+      "quantity": 1000,
+      "photo": "laptop_silver.jpg"
+    },
+    {
+      "id": 102,
+      "color": "Space Gray",
+      "storage": "1TB SSD",
+      "price": 1299.99,
+      "minQuantity": 80,
+      "quantity": 800,
+      "photo": "laptop_space_gray.jpg"
+    }
+  ]
+}

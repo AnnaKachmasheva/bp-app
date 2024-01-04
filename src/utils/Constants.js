@@ -13,7 +13,7 @@ export const UserRole = {
 
 export const QRScanLibraries = [
     { name: 'Html5-QRCode', version: '2.3.8' },
-    { name: 'Html5-QRCode', version: '2.3.8' }
+    { name: 'QrScanner', version: '1.4.2' }
 ];
 
 export const CountItems = [

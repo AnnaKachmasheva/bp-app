@@ -3,10 +3,11 @@ import ReactQRReaderComponent from "./components/ReactQRReaderComponent";
 import styles from './ModalScanQRCode.module.scss';
 import {AiOutlineClose} from "react-icons/ai";
 import ReactZxingComponent from "./components/ReactZxingComponent";
-import Html5QrReaderComponent from "./components/Html5QrReaderComponent";
+import Html5QrReaderComponent from "./selectedforsp/Html5QrReaderComponent";
 import QuaggaComponent from "./components/QuaggaComponent";
 import JsQRReaderComponent from "./components/JsQRReaderComponent";
 import {QRScanLibraries} from "../../../utils/Constants";
+import QrScannerComponent from "./selectedforsp/QrScannerComponent";
 
 export const ModalScanQRCode = (props) => {
     if (!props.show)
@@ -18,16 +19,15 @@ export const ModalScanQRCode = (props) => {
 
 
     const renderContent = () => {
-        switch (props.scanMethod) {
+        switch (props.scanMethod.name) {
 
-            case QRScanLibraries[0].name.toLowerCase():
+            case QRScanLibraries[0].name:
                 return <Html5QrReaderComponent handleData={handleData} />
 
 
-            // case 'react-qr-reader':
-            //     return <ReactQRReaderComponent
-            //         handleData={handleData}
-            //     />;
+            case QRScanLibraries[1].name:
+                return <QrScannerComponent handleData={handleData} />
+
 
             case 'react-zxing':
                 return <ReactZxingComponent
@@ -67,7 +67,7 @@ export const ModalScanQRCode = (props) => {
                 <h2>Scan</h2>
 
                 <div className={styles.scanContainer}>
-                    <p>Selected library: <span>{props.scanMethod}</span></p>
+                    <p>Selected library: <span>{props.scanMethod.name} {props.scanMethod.version}</span></p>
 
                     {renderContent()}
 

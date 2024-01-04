@@ -8,22 +8,34 @@ import {ModalAddTag} from "../../pages/users-page/window-add-tag/ModalAddTag";
 import Button, {ButtonSize, ButtonType} from "../button/Button";
 import {ModalProduct} from "../../pages/inventory-page/modalWindowProduct/ModalProduct";
 import MOCK_DATA from "../../pages/inventory-page/MOCK_DATA.json";
+import {ModalScanQRCode} from "../scanner/window-scan-QR/ModalScanQRCode";
 
 const Nav = (props) => {
 
-    const data = useMemo(() => MOCK_DATA, []);
+    const mocData = useMemo(() => MOCK_DATA, []);
+
+    const scanMethodOptions = QRScanLibraries;
 
     const [showDropdownListLibraries, setShowDropdownListLibraries] = useState(false);
     const [showAddItem, setShowAddItem] = useState(false);
     const [showAddTag, setShowAddTag] = useState(false);
     const [showAddUser, setShowAddUser] = useState(false);
 
+    const [showModalScanQr, setShowModalScanQr] = useState(false);
+    const [scanMethod, setScanMethod] = useState(QRScanLibraries[0]);
+    const [data, setData] = useState(null);
+
     const toggleDropdownListLibraries = () => {
         setShowDropdownListLibraries(!showDropdownListLibraries);
     };
 
-    function handleScanQR(library) {
-        return undefined;
+    const handleSelectScanLibrary = (library) => {
+        setScanMethod(library);
+        setShowModalScanQr(true);
+    };
+
+    const handleData = data => {
+        setData(data);
     }
 
     function renderAddButton(title) {
@@ -83,7 +95,7 @@ const Nav = (props) => {
                                 <ul className={styles.libraries}>
                                     {QRScanLibraries.map((library, index) =>
                                         <li value={library.name}
-                                            onClick={handleScanQR(library.name)}>
+                                            onClick={() => handleSelectScanLibrary(library)}>
                                             {library.name} - Version {library.version}
                                         </li>)}
                                 </ul>
@@ -100,13 +112,19 @@ const Nav = (props) => {
         <div>
             <ModalProduct onClose={() => setShowAddItem(false)}
                           title={"Add product"}
-                          categories={data.categories}
+                          categories={mocData.categories}
                           show={showAddItem}/>
 
             <ModalAddUser onClose={() => setShowAddUser(false)}
                           show={showAddUser}/>
             <ModalAddTag onClose={() => setShowAddTag(false)}
                          show={showAddTag}/>
+
+            <ModalScanQRCode onClose={() => setShowModalScanQr(false)}
+                             show={showModalScanQr}
+                             data={data}
+                             handleData={handleData}
+                             scanMethod={scanMethod}/>
 
             <div className={styles.navBarContainer.concat(' nav')}>
                 <span>{props.title}</span>
