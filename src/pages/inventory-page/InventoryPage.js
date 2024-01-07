@@ -132,7 +132,7 @@ function InventoryPage() {
                 <table>
                     <thead>
                     <tr>
-                        {headers.map((header) => <HeaderItem title={header}/>)}
+                        {headers.map((header, index) => <HeaderItem title={header}/>)}
                         <td className={'column-action'}><CiSettings size={24}/></td>
                     </tr>
                     </thead>

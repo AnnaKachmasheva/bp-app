@@ -1,13 +1,12 @@
 import React from "react";
-import ReactQRReaderComponent from "./components/ReactQRReaderComponent";
 import styles from './ModalScanQRCode.module.scss';
 import {AiOutlineClose} from "react-icons/ai";
-import ReactZxingComponent from "./components/ReactZxingComponent";
 import Html5QrReaderComponent from "./selectedforsp/Html5QrReaderComponent";
-import QuaggaComponent from "./components/QuaggaComponent";
-import JsQRReaderComponent from "./components/JsQRReaderComponent";
 import {QRScanLibraries} from "../../../utils/Constants";
 import QrScannerComponent from "./selectedforsp/QrScannerComponent";
+import ZxingComponent from "./selectedforsp/ZxingComponent";
+import QuaggaComponent from "./selectedforsp/QuaggaComponent";
+import InstascanComponent from "./selectedforsp/InstascanComponent";
 
 export const ModalScanQRCode = (props) => {
     if (!props.show)
@@ -17,34 +16,23 @@ export const ModalScanQRCode = (props) => {
         props.handleData(data);
     }
 
-
     const renderContent = () => {
         switch (props.scanMethod.name) {
 
             case QRScanLibraries[0].name:
-                return <Html5QrReaderComponent handleData={handleData} />
-
-
+                return <Html5QrReaderComponent handleData={handleData}/>
             case QRScanLibraries[1].name:
-                return <QrScannerComponent handleData={handleData} />
+                return <QrScannerComponent handleData={handleData}
+                                           fps={10}
+                                           qrbox={250}
+                                           disableFlip={false}/>
+            case QRScanLibraries[2].name:
+                return <ZxingComponent handleData={handleData}/>
+            case QRScanLibraries[3].name:
+                return <QuaggaComponent handleData={handleData}/>
+            case QRScanLibraries[4].name:
+                return <InstascanComponent handleData={handleData}/>
 
-
-            case 'react-zxing':
-                return <ReactZxingComponent
-                    handleData={handleData}
-                />
-            case 'react-qr-scanner':
-                return <ReactQRReaderComponent
-                    handleData={handleData}
-                />
-            case 'quagga':
-                return <QuaggaComponent
-                    handleData={handleData}
-                />
-            case 'jsqr':
-                return <JsQRReaderComponent
-                    handleData={handleData}
-                />
             default:
                 return null;
 

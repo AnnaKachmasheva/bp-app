@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef} from 'react';
 import QrScanner from 'qr-scanner';
 
 const QrScannerComponent = (props) => {
@@ -7,12 +7,12 @@ const QrScannerComponent = (props) => {
     const qrScannerRef = useRef(null);
 
     useEffect(() => {
-        // Initialize the QR scanner
+        // initialize the QR scanner
         qrScannerRef.current = new QrScanner(
             videoRef.current,
             (result) => {
                 console.log('decoded qr code:', result);
-                // You can also pass the result to a parent component or handle it here
+                // pass the result to a parent component
                 props.handleData(result);
             },
             (error) => {
@@ -20,10 +20,10 @@ const QrScannerComponent = (props) => {
             }
         );
 
-        // Start the scanner
+        // start the scanner
         qrScannerRef.current.start();
 
-        // Cleanup function
+        // cleanup function
         return () => {
             qrScannerRef.current.stop();
             qrScannerRef.current.destroy();
@@ -31,10 +31,8 @@ const QrScannerComponent = (props) => {
     }, []);
 
     return (
-        <div>
-            <video ref={videoRef}
-                   style={{ width: '100%' }} />
-        </div>
+        <video ref={videoRef}
+               style={{width: '100%'}}/>
     );
 };
 

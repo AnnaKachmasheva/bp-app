@@ -1,5 +1,5 @@
 import React from "react";
-import styles from './ReactQRReaderComponent.module.scss';
+import styles from '../selectedforsp/ReactQRReaderComponent.module.scss';
 import {QrScanner} from "@yudiel/react-qr-scanner";
 
 const ReactQRReaderComponent = (props) => {

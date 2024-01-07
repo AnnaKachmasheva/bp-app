@@ -2,8 +2,7 @@ import React from "react";
 import styles from './ReactQRReaderComponent.module.scss';
 import {useZxing} from "react-zxing";
 
-
-const ReactZxingComponent = (props) => {
+const ZxingComponent = (props) => {
 
     const {ref} = useZxing({
         onDecodeResult(result) {
@@ -21,4 +20,4 @@ const ReactZxingComponent = (props) => {
 
 }
 
-export default ReactZxingComponent;
+export default ZxingComponent;

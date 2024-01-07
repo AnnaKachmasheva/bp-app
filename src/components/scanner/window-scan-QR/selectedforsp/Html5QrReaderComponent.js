@@ -1,46 +1,56 @@
-import React, {useEffect, useRef, useState} from "react";
-import {Html5Qrcode} from "html5-qrcode";
+import React, {useEffect} from "react";
+import {Html5QrcodeScanner} from "html5-qrcode";
 
 
 const Html5QrReaderComponent = (props) => {
 
-    const videoRef = useRef(null);
-    const html5QrCodeRef = useRef(null);
-    const [scannedCode, setScannedCode] = useState(null);
+    // id of the HTML element
+    const qrcodeRegionId = "html5qr-code-full-region";
+
+    // configuration
+    const createConfig = (props) => {
+        let config = {};
+
+        if (props.fps) {
+            config.fps = props.fps;
+        }
+        if (props.qrbox) {
+            config.qrbox = props.qrbox;
+        }
+        if (props.aspectRatio) {
+            config.aspectRatio = props.aspectRatio;
+        }
+        if (props.disableFlip !== undefined) {
+            config.disableFlip = props.disableFlip;
+        }
+        return config;
+    };
 
     useEffect(() => {
-        const startScanner = async () => {
-            try {
-                html5QrCodeRef.current = new Html5Qrcode('qr-code-scanner', {});
-                await html5QrCodeRef.current.start();
-                html5QrCodeRef.current.onScan((qrCode) => {
-                    setScannedCode(qrCode);
-                    props.handleData(qrCode);
-                });
-            } catch (error) {
-                console.error('Error starting QR code scanner:', error);
-            }
-        };
+        // extra configurations to tune the code scanner
+        const config = createConfig(props);
+        // if true, all logs would be printed to console
+        const verbose = props.verbose === true;
 
-        startScanner();
+        // success callback is required
+        if (!(props.handleData)) {
+            throw "qrCodeSuccessCallback is required callback.";
+        }
 
+        const html5QrcodeScanner = new Html5QrcodeScanner(qrcodeRegionId, config, verbose);
+        html5QrcodeScanner.render(props.handleData, null);
+
+        // cleanup function when component will unmount
         return () => {
-            if (html5QrCodeRef.current) {
-                try {
-                    html5QrCodeRef.current.stop();
-                } catch (error) {
-                    console.error('Error stopping QR code scanner:', error);
-                }
-            }
+            html5QrcodeScanner.clear().catch(error => {
+                console.error("Failed to clear html5QrcodeScanner. ", error);
+            });
         };
-    }, [props.handleData]);
+    }, []);
+
 
     return (
-        <div>
-            <video ref={videoRef}
-                   id="qr-code-scanner"
-                   style={{width: '100%'}}/>
-        </div>
+        <div id={qrcodeRegionId}/>
     );
 };
 
