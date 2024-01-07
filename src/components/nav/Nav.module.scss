@@ -1,3 +1,5 @@
+@import '/code-bp-ui/src/colors';
+
 .navBarContainer {
   width: calc(100vw - 300px - 6vw);
   margin-left: 240px;
@@ -9,9 +11,9 @@
   justify-content: space-between;
   align-items: center;
 
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid $modal-box-shadow-color;
 
-  color: #828282;
+  color: $sub-text-color;
   font-weight: normal;
 
   span {
@@ -44,18 +46,18 @@
   position: absolute;
   padding: 5px;
 
-  background: white;
+  background: $bg-color;
   list-style-type: none;
 
-  border: 1px solid rgba(0, 0, 0, 0.22);
+  border: 1px solid $border-color;
   box-sizing: border-box;
-  box-shadow: 3px 4px 15px -1px rgba(0, 0, 0, 0.3);
+  box-shadow: 3px 4px 15px -1px $modal-box-shadow-color;
   border-radius: 5px;
 
   cursor: default;
 
   li {
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid $li-border-color;
     padding: 10px;
   }
 
@@ -65,8 +67,8 @@
 
   li:hover {
     cursor: pointer;
-    text-decoration: #828282;
+    text-decoration: $sub-text-color;
 
-    color: #219653;
+    color: $green-color;
   }
 }

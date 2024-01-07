@@ -1,9 +1,9 @@
 import React from "react";
 
 const ModalWindow = (props) => {
+
     if (!props.show)
         return null;
-
 
     return (
         <div className={'modal'}>

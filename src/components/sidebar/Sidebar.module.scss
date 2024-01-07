@@ -1,3 +1,5 @@
+@import '/code-bp-ui/src/colors';
+
 .sidebarContainer {
   height: 100vh;
 
@@ -9,8 +11,8 @@
 
   margin: 0;
   padding: 30px 0 0 0;
-  background: #219653FF;
-  border: 1px solid #219653FF;
+  background: $green-color;
+  border: 1px solid $green-color;
 
   .sidebarItem {
     display: grid;
@@ -33,19 +35,19 @@
 
   .selectedItem {
     background: white;
-    color: #219653;
+    color: $green-color;
 
     .sidebarIcon {
-      color: #219653;
+      color: $green-color;
     }
   }
 
   .notSelectedItem {
     background: none;
-    color: white;
+    color: $bg-color;
 
     .sidebarIcon {
-      color: white;
+      color: $bg-color;
     }
   }
 
@@ -55,11 +57,11 @@
   }
 
   hr {
-    color: white;
+    color: $bg-color;
   }
 
   .logOutBtn {
-    color: white;
+    color: $bg-color;
     font-size: 20px;
 
     justify-content: flex-start;
@@ -70,11 +72,11 @@
   }
 
   .logOutBtn:hover {
-    background: white;
-    color: #219653;
+    background: $bg-color;
+    color: $green-color;
 
     .sidebarIcon {
-      color: #219653;
+      color: $green-color;
     }
   }
 }
@@ -83,14 +85,14 @@
   width: auto;
   margin: 0 30px;
 
-  color: white;
+  color: $bg-color;
 }
 
 .sidebarItem:hover {
-  background: #26ad60;
+  background: $secondary-btn-color-active;
 
   .sidebarIcon, p {
-    color: white;
+    color: $bg-color;
   }
 }
 

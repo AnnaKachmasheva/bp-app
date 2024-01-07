@@ -1,5 +1,6 @@
 import React, {useEffect} from "react";
 import {Html5QrcodeScanner} from "html5-qrcode";
+import styles from "./ScannerComponent.module.scss";
 
 
 const Html5QrReaderComponent = (props) => {
@@ -50,7 +51,8 @@ const Html5QrReaderComponent = (props) => {
 
 
     return (
-        <div id={qrcodeRegionId}/>
+        <div id={qrcodeRegionId}
+             className={styles.cameraContainer}/>
     );
 };
 

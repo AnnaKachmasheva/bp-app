@@ -5,8 +5,8 @@ import Html5QrReaderComponent from "./selectedforsp/Html5QrReaderComponent";
 import {QRScanLibraries} from "../../../utils/Constants";
 import QrScannerComponent from "./selectedforsp/QrScannerComponent";
 import ZxingComponent from "./selectedforsp/ZxingComponent";
-import QuaggaComponent from "./selectedforsp/QuaggaComponent";
-import InstascanComponent from "./selectedforsp/InstascanComponent";
+import ReactQRReaderComponent from "./selectedforsp/QRReaderComponent";
+import JsQRComponent from "./selectedforsp/JsQRComponent";
 
 export const ModalScanQRCode = (props) => {
     if (!props.show)
@@ -29,9 +29,10 @@ export const ModalScanQRCode = (props) => {
             case QRScanLibraries[2].name:
                 return <ZxingComponent handleData={handleData}/>
             case QRScanLibraries[3].name:
-                return <QuaggaComponent handleData={handleData}/>
+                return <ReactQRReaderComponent handleData={handleData}/>
             case QRScanLibraries[4].name:
-                return <InstascanComponent handleData={handleData}/>
+                return <JsQRComponent handleData={handleData}/>
+
 
             default:
                 return null;

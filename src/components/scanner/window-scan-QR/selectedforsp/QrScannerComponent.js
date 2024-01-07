@@ -11,7 +11,6 @@ const QrScannerComponent = (props) => {
         qrScannerRef.current = new QrScanner(
             videoRef.current,
             (result) => {
-                console.log('decoded qr code:', result);
                 // pass the result to a parent component
                 props.handleData(result);
             },

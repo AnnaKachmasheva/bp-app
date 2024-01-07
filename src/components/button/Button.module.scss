@@ -1,20 +1,4 @@
-$text-color: #131212;
-$bg-color: white;
-
-$primary-btn-color: #F2994A;
-$primary-btn-color-active: #c05700;
-$primary-btn-color-hover: #f1811c;
-$primary-btn-color-disable: rgba(241, 129, 28, 0.5);
-
-$secondary-btn-color: #219653;
-$secondary-btn-color-active: #176739;
-$secondary-btn-color-hover: #1c7743;
-$secondary-btn-color-disable: #426c54;
-
-$danger-btn-color: #d52537;
-$danger-btn-color-active: #b92130;
-$danger-btn-color-hover: #a81e2c;
-$danger-btn-color-disable: #bb4d59;
+@import '/code-bp-ui/src/colors';
 
 // common styles
 button {

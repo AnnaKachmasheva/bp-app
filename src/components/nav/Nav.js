@@ -14,8 +14,6 @@ const Nav = (props) => {
 
     const mocData = useMemo(() => MOCK_DATA, []);
 
-    const scanMethodOptions = QRScanLibraries;
-
     const [showDropdownListLibraries, setShowDropdownListLibraries] = useState(false);
     const [showAddItem, setShowAddItem] = useState(false);
     const [showAddTag, setShowAddTag] = useState(false);

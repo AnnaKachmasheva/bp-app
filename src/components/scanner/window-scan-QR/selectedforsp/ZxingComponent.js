@@ -1,5 +1,5 @@
 import React from "react";
-import styles from './ReactQRReaderComponent.module.scss';
+import styles from './ScannerComponent.module.scss';
 import {useZxing} from "react-zxing";
 
 const ZxingComponent = (props) => {

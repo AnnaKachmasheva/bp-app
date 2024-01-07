@@ -1,3 +1,5 @@
+@import '/code-bp-ui/src/colors';
+
 .scanContainer {
   padding: 0;
   width: 400px;
@@ -7,7 +9,7 @@
     font-size: 1.4em;
 
     span {
-      color: #219653;
+      color: $green-color;
     }
   }
 }
@@ -17,7 +19,7 @@
   height: 100vh;
   margin: 0;
   padding: 0;
-  background: rgba(108, 117, 125, 0.50);
+  background: $modal-background-color;
   overflow: hidden;
 
   display: flex;
@@ -33,11 +35,11 @@
   }
 
   .icon:hover {
-    color: black;
+    color: $text-color;
   }
 
   h2, p {
-    color: white;
+    color: $bg-color;
     text-align: center;
   }
 }

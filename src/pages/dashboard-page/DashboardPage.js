@@ -12,7 +12,6 @@ function DashboardPage() {
 
 class Card extends Component {
 
-
     render() {
         return (
             <div className={''}>

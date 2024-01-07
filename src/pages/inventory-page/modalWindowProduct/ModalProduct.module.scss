@@ -1,15 +1,17 @@
+@import '/code-bp-ui/src/colors';
+
 .variant {
   margin-bottom: 20px;
 }
 
 .attributeForm {
-  background-color: rgba(173, 173, 173, 0.68);
+  background-color: $modal-background-color;
   border-radius: 6px;
 
   padding: 20px;
   margin: 2vh 0;
 
-  color: white;
+  color: $bg-color;
 
   button {
     margin-top: 2vh;

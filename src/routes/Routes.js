@@ -40,10 +40,6 @@ export const routes = [
     {
         path: "documentation",
         main: () => <DocumentationPage/>
-    },
-    {
-        path: "barcodedetector",
-        main: () => <BarcodeDetector/>
     }
 
 ];

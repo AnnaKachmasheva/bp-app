@@ -1,5 +1,5 @@
 import React from "react";
-import styles from '../selectedforsp/ReactQRReaderComponent.module.scss';
+import styles from '../selectedforsp/ScannerComponent.module.scss';
 
 
 const JsQRReaderComponent = (props) => {

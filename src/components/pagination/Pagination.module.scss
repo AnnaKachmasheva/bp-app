@@ -1,3 +1,5 @@
+@import '/code-bp-ui/src/colors';
+
 .pagination {
   margin-left: auto;
   margin-bottom: 6vh;
@@ -27,8 +29,8 @@
 
   // selected btn page
   .numberPage:disabled {
-    background-color: #828282;
-    color: white;
+    background-color: $sub-text-color;
+    color: $bg-color;
   }
 
 }

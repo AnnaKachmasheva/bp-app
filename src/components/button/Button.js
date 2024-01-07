@@ -8,6 +8,7 @@ const Button = ({onClick, label, type, size, icon, isDisabled}) => {
         }
     };
 
+    // determine the button's type and size styles
     const getButtonType = () => {
         const buttonType = ButtonType.find(item => item.type === type);
         const buttonSize = ButtonSize.find(item => item.size === size);

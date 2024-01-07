@@ -17,16 +17,17 @@ import {ModalProduct} from "./modalWindowProduct/ModalProduct";
 
 function InventoryPage() {
 
+    // Initial setup of headers and mock data
     const headers = ['CATEGORY', 'NAME', 'QUANTITY', 'VALUE', 'DESCRIPTION', 'DATE'];
-
     const data = useMemo(() => MOCK_DATA, []);
 
+    // State variables for managing UI interactions and data selection
     const [selectedNumber, setSelectedNumber] = useState(5)
     const [selectedCategories, setSelectedCategories] = useState(data.categories);
     const [selectedAll, setSelectedAll] = useState(false);
     const [isDropdownVisible, setDropdownVisible] = useState(false);
 
-
+    // Event handlers for various UI interactions like dropdown toggle, category selection, etc
     const setSelectedOption = (option) => {
         setSelectedNumber(option);
     };

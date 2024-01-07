@@ -1,24 +1,12 @@
-$text-color: #000000;
-$bg-color: white;
+@import 'colors';
 
 $btn-width: 120px;
 $btn-height: 40px;
 $block-padding: 60px;
 
-$primary-btn-color: #4a96f2;
-$primary-btn-color-active: #c05700;
-$primary-btn-color-hover: #f1811c;
-$primary-btn-color-disable: rgba(241, 129, 28, 0.5);
-
-$form-sub-tile-color: #4F4F4F;
-$grey-color: #D9D9D9;
-$tips-bg-color: #E9F5EE;
-$green-color: #219653;
-
 $mediaMaxWidth: 1260px;
 $mediaBp1Width: 960px;
 $mediaMinWidth: 480px;
-
 
 // main
 .main {
@@ -34,6 +22,11 @@ $mediaMinWidth: 480px;
   grid-template-areas:
     "sidebar nav"
     "sidebar main-content"
+}
+
+.main-container, #root, body {
+  padding: 0;
+  margin: 0;
 }
 
 .sidebar {
@@ -62,13 +55,13 @@ table {
   border-collapse: collapse;
 
   thead {
-    background: #F2F2F2;
+    background: $table-head-color;
     font-weight: normal;
     text-align: center;
   }
 
   td {
-    border: 1px solid #ddd;
+    border: 1px solid $table-border-color;
     padding: 10px;
   }
 
@@ -179,7 +172,7 @@ ul {
   right: 0;
   bottom: 0;
 
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: $modal-background-color;
 
   .modal-header {
     font-size: 1.6em;
@@ -191,7 +184,7 @@ ul {
   }
 
   .modal-header, .modal-subtitle {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid $modal-box-shadow-color;
     padding-bottom: 10px;
     margin: 0;
   }
@@ -229,7 +222,6 @@ ul {
 
 // form
 .form {
-
   .form-input {
     display: flex;;
     flex-direction: column;
@@ -276,7 +268,7 @@ ul {
     span {
       margin-top: 20px;
       margin-bottom: -10px;
-      color: #1c7743;
+      color: $secondary-btn-color-hover;
     }
   }
 }
@@ -307,31 +299,30 @@ input, .label, select, textarea {
 }
 
 input:focus, textarea:focus, select:focus {
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-  border-color: rgb(0, 123, 255);
+  box-shadow: 0 0 5px $input-box-shadow-color;
+  border-color: $input-border-color;
   outline: none;
 }
 
 /* Style for disabled input */
 input:disabled {
-  background-color: #f8f9fa;
-  color: #6c757d;
+  background-color: $input-background-color;
+  color: $input-border-color;
   cursor: not-allowed;
 }
 
 .invalid-feedback {
-  color: #d52537;
+  color: $danger-btn-color;
   font-size: 0.8em;
 }
 
 .is-invalid {
-  border-color: #d52537;
+  border-color: $danger-btn-color;
 }
 
 .is-valid {
   border-color: $green-color;
 }
-
 
 .select {
   display: flex;
