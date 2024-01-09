@@ -25,9 +25,6 @@ function UsersPage() {
                 <table>
                     <thead>
                     <tr>
-                        <td className={'checkbox-container'}>
-                            <input type={"checkbox"}/>
-                        </td>
                         {headers.map((header) => <HeaderItem title={header}/>)}
                     </tr>
                     </thead>
@@ -75,7 +72,6 @@ class TableRow extends Component {
     render() {
         return (
             <tr>
-                <td className={'checkbox-container'}><input type={"checkbox"}/></td>
                 <td>
                     <h6>{this.props.user.firstName} {this.props.user.lastName}</h6>
                     <p>{this.props.user.email}</p>

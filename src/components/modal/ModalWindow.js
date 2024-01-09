@@ -8,9 +8,10 @@ const ModalWindow = (props) => {
     return (
         <div className={'modal'}>
             <div className={'modal-window-content'}>
-                <p className={'modal-header'}>
-                    {props.title}
-                </p>
+                {props.title ?
+                    <p className={'modal-header'}>
+                        {props.title}
+                    </p> : null}
                 {props.content}
             </div>
         </div>

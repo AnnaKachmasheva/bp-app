@@ -1,0 +1,66 @@
+@import '/code-bp-ui/src/colors';
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+
+  margin: 6vh 6vw;
+
+  .columnInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end
+  }
+
+  .main {
+    display: inline-flex;
+    gap: 5vw;
+
+    h3 {
+      font-size: 1.3em;
+      color: $green-color;
+    }
+  }
+
+  .mainInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+
+    h4 {
+      padding: 0;
+      margin: 0;
+
+      font-size: 1.1em;
+      font-weight: normal;
+
+      color: $form-sub-tile-color;
+
+      span {
+        color: $text-color;
+      }
+    }
+  }
+
+  img {
+    width: 250px;
+    height: 250px;
+    background: $grey-color;
+  }
+
+  button {
+    width: 100px;
+  }
+}
+
+.buttonsContainer {
+  display: inline-flex;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+
+  button {
+    width: 10vw;
+  }
+}

@@ -2,13 +2,13 @@ import React from "react";
 
 import InventoryPage from "../pages/inventory-page/InventoryPage";
 import DashboardPage from "../pages/dashboard-page/DashboardPage";
-import TagsPage from "../pages/tags-page/TagsPage";
 import UsersPage from "../pages/users-page/UsersPage";
 import ProfilePage from "../pages/profile-page/ProfilePage";
 import {PageTitles} from "../utils/Constants";
 import DocumentationPage from "../pages/documentation-page/DocumentationPage";
 import BasicPage from "../pages/BasicPage";
-import BarcodeDetector from "../components/scanner/window-scan-QR/detector/BarcodeDetector";
+import ProductPage from "../pages/product-page/ProductPage";
+import VariantPage from "../pages/variant-page/VariantPage";
 
 
 export const routes = [
@@ -23,9 +23,14 @@ export const routes = [
                                title={PageTitles.INVENTORY}/>
     },
     {
-        path: "app/tags",
-        main: () => <BasicPage page={<TagsPage/>}
-                               title={PageTitles.TAGS}/>
+        path: "app/inventory/product/:id",
+        main: () => <BasicPage page={<ProductPage/>}
+                               title={PageTitles.INVENTORY}/>
+    },
+    {
+        path: "app/inventory/product/:idProduct/variant/:idVariant",
+        main: () => <BasicPage page={<VariantPage/>}
+                               title={PageTitles.INVENTORY}/>
     },
     {
         path: "app/users",

@@ -1,81 +1,89 @@
-import React, {Component, useMemo, useState} from "react";
-import MOCK_DATA from "./MOCK_DATA.json"
-import {CiSettings} from "react-icons/ci";
+import React, {Component, useState} from "react";
 import {CountItems} from "../../utils/Constants";
 import Pagination from "../../components/pagination/Pagination";
+import {IoQrCodeOutline} from "react-icons/io5";
+import {formatNumberWithSpaces, toStringForQRCode} from "../../utils/Common";
+import styles from './ProductPage.module.scss';
+import {useLocation, useNavigate, useParams} from "react-router-dom";
+import {ModalQRCode} from "../../components/scanner/window-show-QR/ModalQRCode";
 
 
 function ProductPage() {
 
-    const data = useMemo(() => MOCK_DATA, []);
+    // Initial setup of headers and mock data
+    const headers = ['PHOTO', 'PRICE', 'QUANTITY', 'MIN QUANTITY', 'VALUE', 'QR'];
 
+    // State variables for managing UI interactions and data selection
     const [selectedNumber, setSelectedNumber] = useState(5)
-    // const [isDropdownVisible, setDropdownVisible] = useState(false);
-    const [selectedCategories, setSelectedCategories] = useState(data.categories);
 
+    const {id} = useParams();
+    const {state} = useLocation();
+
+    const navigate = useNavigate();
+
+    // Event handlers for various UI interactions like dropdown toggle, category selection, etc
     const setSelectedOption = (option) => {
         setSelectedNumber(option);
     };
 
-    function getHeaders() {
-        if (!data) {
-            return [];
-        }
-
-        const firstItem = data[0];
-        if (!firstItem) {
-            return [];
-        }
-
-        const propertyNames = Object.keys(firstItem);
-
-        return propertyNames.filter(name => name !== 'id');
+    function calculateTotalQuantity() {
+        let sum = 0;
+        state?.product.variants.map((variant, index) => (
+            sum += variant.quantity
+        ))
+        return sum;
     }
 
-    function getVariantValue(variant, propertyName) {
-        if (!variant || !propertyName) {
-            return null;
-        }
-
-        return variant.hasOwnProperty(propertyName) ? variant[propertyName] : null;
+    function calculateTotalValue() {
+        let sum = 0;
+        state?.product.variants.map((variant, index) => (
+            sum += variant.quantity * variant.price
+        ))
+        return sum;
     }
+
+    const goToVariantPage = (variant) => {
+        const idProduct = state.product.id;
+        const idVariant = variant.id;
+        navigate(`/app/inventory/product/${idProduct}/variant/${idVariant}`, {state: {variant: variant}});
+    }
+
 
     return (
         <div className={'content'}>
             {/* title */}
-            <h3>{data.name}</h3>
+            <div className={'total '.concat(styles.title)}>
+                <h4>Category: <span>{state?.category.name}</span></h4>
+                <h4>Name: <span>{state?.product.name}</span></h4>
+            </div>
 
-            <h4>Category <span>{data.category}</span></h4>
-
-            {/* table with variants*/}
             <div className={'panel'}>
 
-                {/* total info */}
-                <div className={'total'}>
-                    <h4>Total quantity: <span>5 202</span></h4>
-                    <h4>Total value: <span>17 313</span></h4>
+                <div className={styles.tableInfo}>
+                    <h4 className={styles.title}>Variants</h4>
+
+                    {/* total info */}
+                    <div className={'total'}>
+                        <h4>Total quantity: <span>{formatNumberWithSpaces(calculateTotalQuantity())}</span></h4>
+                        <h4>Total value: <span>{formatNumberWithSpaces(calculateTotalValue())}</span></h4>
+                    </div>
                 </div>
+
 
                 {/* item's table */}
                 <table>
                     <thead>
                     <tr>
-                        {getHeaders().map((header) => <HeaderItem title={header}/>)}
-
-                        <td className={'column-action'}><CiSettings size={24}/></td>
+                        {headers.map((header, index) => <HeaderItem title={header}/>)}
                     </tr>
                     </thead>
 
                     <tbody>
-                    {data.variants.map(variant => (
-                        <tr>
-                            {
-                                getHeaders().map(header =>
-                                    <TableCell item={getVariantValue(variant, header)}/>
-                                )
-                            }
-                        </tr>
-                    ))}
+                    {state?.product.variants.map((variant) =>
+                        <TableRowGroupItem item={variant}
+                                           handleClick={() => goToVariantPage(variant)}
+                                           showVariant={()=>goToVariantPage(variant)}/>
+                    )}
                     </tbody>
 
                 </table>
@@ -95,9 +103,9 @@ function ProductPage() {
                 </div>
 
                 {/* pagination */}
-                {/*<Pagination data={selectedCategories}*/}
-                {/*            itemsPerPage={selectedNumber}*/}
-                {/*/>*/}
+                <Pagination data={state?.product.variants}
+                            itemsPerPage={selectedNumber}
+                />
 
             </div>
         </div>
@@ -107,21 +115,61 @@ function ProductPage() {
 class HeaderItem extends Component {
     render() {
         return (
-            <td scope={'col'}>
+            <td scope={'col'} className={(this.props.title === 'QR') ? 'column-action' : ''}>
                 {this.props.title}
             </td>
         )
     }
 }
 
-class TableCell extends Component {
+class TableRowGroupItem extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            showQR: false
+        };
+    }
+
+    handleShowQRCode = () => {
+        this.setState(() => ({
+            showQR: true,
+        }));
+    }
+
+    showVariant = () => {
+        this.props.showVariant();
+    }
+
     render() {
+
+        const {showQR} = this.state;
+        const isLessThanMin = this.props.item.quantity <= this.props.item.minQuantity;
+
         return (
-            <td scope={'col'}>
-                {this.props.title}
-            </td>
+            <tr key={this.props.item.id}>
+                <ModalQRCode onClose={() => this.setState({showQR: false})}
+                             data={toStringForQRCode(this.props.item)}
+                             showVariant={() => this.showVariant()}
+                             show={showQR}/>
+
+                <td onClick={this.props.handleClick}>
+                    <img src={this.props.item.photo}
+                         alt={this.props.item.photo}/>
+                </td>
+                <td onClick={this.props.handleClick}>{this.props.item.price}</td>
+                <td onClick={this.props.handleClick}
+                    className={isLessThanMin ? styles.danger : ''}>{this.props.item.quantity}</td>
+                <td onClick={this.props.handleClick}>{this.props.item.minQuantity}</td>
+                <td onClick={this.props.handleClick}>
+                    {formatNumberWithSpaces(this.props.item.quantity * this.props.item.price)}
+                </td>
+                <td className={'column-action'}>{
+                    <IoQrCodeOutline onClick={this.handleShowQRCode}/>}
+                </td>
+            </tr>
         )
     }
 }
 
-export default ProductPage
+export default ProductPage;

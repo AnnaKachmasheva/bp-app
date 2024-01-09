@@ -1,0 +1,35 @@
+@import '/code-bp-ui/src/colors';
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  padding-top: 200px;
+
+  .card {
+    height: 24vh;
+    width: 24vw;
+    padding: 20px;
+
+    display: grid;
+
+    border-radius: 6px;
+    border: 1px solid $grey-color;
+    box-shadow: 0 0 6px $grey-color;
+
+    p {
+      align-self: flex-end;
+      text-align: center;
+      font-size: 4vh;
+      margin: 0;
+
+      color: $green-color;
+    }
+
+    span {
+      text-align: center;
+      font-size: 3vh;
+    }
+  }
+}

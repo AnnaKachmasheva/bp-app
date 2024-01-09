@@ -13,6 +13,9 @@ import {LuCopyPlus} from "react-icons/lu";
 import {BiTransfer} from "react-icons/bi";
 import {ModalDeleteProductConfirm} from "./modalWindowDeleteProduct/ModalDeleteProductConfirm";
 import {ModalProduct} from "./modalWindowProduct/ModalProduct";
+import {formatDatetime, formatNumberWithSpaces} from "../../utils/Common";
+import {useNavigate} from 'react-router-dom';
+import ModalWindow from "../../components/modal/ModalWindow";
 
 
 function InventoryPage() {
@@ -26,6 +29,9 @@ function InventoryPage() {
     const [selectedCategories, setSelectedCategories] = useState(data.categories);
     const [selectedAll, setSelectedAll] = useState(false);
     const [isDropdownVisible, setDropdownVisible] = useState(false);
+
+    const navigate = useNavigate();
+
 
     // Event handlers for various UI interactions like dropdown toggle, category selection, etc
     const setSelectedOption = (option) => {
@@ -60,6 +66,11 @@ function InventoryPage() {
 
     function handleContainerCategoryOptions() {
         setDropdownVisible(false)
+    }
+
+    const goToProductPage = (product, category) => {
+        const id = product.id;
+        navigate(`/app/inventory/product/${id}`, {state: {product: product, category}});
     }
 
     return (
@@ -142,7 +153,8 @@ function InventoryPage() {
                     {selectedCategories.map((category) => category.items.map((item) =>
                         <TableRowGroupItem item={item}
                                            categories={data.categories}
-                                           category={category}/>
+                                           category={category}
+                                           handleClick={() => goToProductPage(item, category)}/>
                     ))}
                     </tbody>
 
@@ -190,6 +202,7 @@ class TableRowGroupItem extends Component {
             showOptions: false,
             showConfirmDeleteModal: false,
             showProductModal: false,
+            showTransactionModal: false,
             modalTitle: ""
         };
     }
@@ -214,32 +227,14 @@ class TableRowGroupItem extends Component {
         return sum;
     };
 
-    formatDatetime(datetime) {
-        const options = {
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit',
-            hour: '2-digit',
-            minute: '2-digit',
-            second: '2-digit',
-            hour12: false
-        };
-
-        const formattedDatetime = new Date(datetime).toLocaleString('en-US', options);
-        return formattedDatetime.replace(/,/g, '');
-    }
-
-    formatNumberWithSpaces(number) {
-        return number.toLocaleString('en-US').replace(/,/g, ' ');
-    }
-
-
     renderOptionsList() {
         if (!this.state.showOptions)
             return null;
 
         const {showConfirmDeleteModal} = this.state;
         const {showProductModal} = this.state;
+        const {showTransactionModal} = this.state;
+
 
         return (
             <div>
@@ -257,8 +252,12 @@ class TableRowGroupItem extends Component {
                               product={this.props.item}
                               show={showProductModal}/>
 
+                <ModalWindow show={showTransactionModal}
+                             title={this.state.modalTitle}
+                             content={"todo"}/>
+
                 <ul className='options-list'>
-                    <li onClick={() => this.setState({showProductModal: true, modalTitle: "New transaction"})}>
+                    <li onClick={() => this.setState({showTransactionModal: true, modalTitle: "New transaction"})}>
                         <BiTransfer/>
                         Transaction
                     </li>
@@ -284,13 +283,13 @@ class TableRowGroupItem extends Component {
         const totalValue = this.calculateTotalValue();
 
         return (
-            <tr>
-                <td>{this.props.category.name}</td>
-                <td>{this.props.item.name}</td>
-                <td>{this.formatNumberWithSpaces(totalQuantity)}</td>
-                <td>{this.formatNumberWithSpaces(totalValue)}</td>
-                <td>{this.props.item.description}</td>
-                <td>{this.formatDatetime(this.props.item.datetime)}</td>
+            <tr key={this.props.item.id}>
+                <td onClick={this.props.handleClick}>{this.props.category.name}</td>
+                <td onClick={this.props.handleClick}>{this.props.item.name}</td>
+                <td onClick={this.props.handleClick}>{formatNumberWithSpaces(totalQuantity)}</td>
+                <td onClick={this.props.handleClick}>{formatNumberWithSpaces(totalValue)}</td>
+                <td onClick={this.props.handleClick}>{this.props.item.description}</td>
+                <td onClick={this.props.handleClick}>{formatDatetime(this.props.item.datetime)}</td>
                 <td className={'column-action'}>
                     <SlOptions className={styles.itemActions}
                                onClick={this.handleOptionsClick}/>

@@ -1,43 +1,57 @@
 import React from "react";
-import styles from './ModalQRCode.module.scss';
-import {AiOutlineClose} from "react-icons/ai";
+import ModalWindow from "../../modal/ModalWindow";
 import QRCode from "qrcode.react";
+import styles from "./ModalQRCode.module.scss";
+import Button, {ButtonSize, ButtonType} from "../../button/Button";
+import {useNavigate} from "react-router-dom";
 
 
 export const ModalQRCode = (props) => {
+
     if (!props.show)
         return null;
 
-    let qrCodeSize =  230;
+    let qrCodeSize = 230;
 
-    return (
-        <div className={'modal'}
-             onClick={props.onClose}>
+    function handlePrintCode() {
+        //todo
+    }
 
-            <div className={styles.container.concat(" content")}
-                 onClick={(e) => e.stopPropagation()}>
-
-                <AiOutlineClose
-                    className={styles.icon}
-                    onClick={props.onClose}
-                    size={40}
-                />
-
+    function getContent() {
+        return (
+            <div className={'modal-window-body '.concat(styles.container)}>
                 <QRCode value={props.data}
                         size={qrCodeSize}
-                        className={styles.code}
+                        className={'code'}
                 />
 
+                {/* code data */}
                 <p>Data: <span>{props.data}</span></p>
 
+                <div className={'buttons'}>
 
-                <button type={'submit'}
-                        className={'btn btn-lg btn-success '.concat(styles.btnPrint)}
-                        >
-                    Show item
-                </button>
+                    <Button type={ButtonType[3].type}
+                            size={ButtonSize[1].size}
+                            onClick={props.onClose}
+                            label={'Cancel'}/>
 
+                    <Button type={ButtonType[2].type}
+                            size={ButtonSize[1].size}
+                            onClick={() => handlePrintCode()}
+                            label={'Print code'}/>
+
+                    <Button type={ButtonType[0].type}
+                            size={ButtonSize[1].size}
+                            onClick={props.showVariant}
+                            label={'Show variant'}/>
+                </div>
             </div>
-        </div>
+        )
+    }
+
+    return (
+        <ModalWindow show={props.show}
+                     content={getContent()}/>
     )
+
 }

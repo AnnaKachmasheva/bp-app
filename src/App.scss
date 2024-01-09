@@ -8,9 +8,15 @@ $mediaMaxWidth: 1260px;
 $mediaBp1Width: 960px;
 $mediaMinWidth: 480px;
 
+* {
+  font-family: 'system-ui';
+  font-size: 16px;
+}
+
 // main
 .main {
   display: grid;
+
   height: 100%;
   width: 100%;
 
@@ -24,7 +30,7 @@ $mediaMinWidth: 480px;
     "sidebar main-content"
 }
 
-.main-container, #root, body {
+body {
   padding: 0;
   margin: 0;
 }
@@ -69,6 +75,11 @@ table {
     border-top: none;
   }
 
+  tbody > tr:hover {
+    background-color: $tips-bg-color;
+    cursor: pointer;
+  }
+
   th {
     border-top: none;
   }
@@ -106,6 +117,10 @@ thead, tbody tr {
   justify-content: flex-end;
   gap: 20px;
   width: 100%;
+
+  h4, span {
+    font-size: 1.1em;
+  }
 
   span {
     font-weight: lighter;
@@ -193,7 +208,7 @@ ul {
     display: flex;
     flex-direction: column;
     max-height: 90vh;
-    min-width: 50vw;
+    width: fit-content;
 
     text-align: left;
 
@@ -354,4 +369,21 @@ input:disabled {
   display: inline-flex;
   align-items: center;
   justify-content: space-between
+}
+
+.item-actions {
+  cursor: pointer;
+}
+
+.item-actions:hover {
+  color: $green-color;
+}
+
+.panel {
+  margin-bottom: 30px;
+}
+
+.code {
+  width: 230px;
+  margin: 2vh 0;
 }

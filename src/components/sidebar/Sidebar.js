@@ -25,10 +25,6 @@ const Sidebar = (props) => {
             link: "/inventory"
         },
         {
-            linkText: PageTitles.TAGS,
-            link: "/tags"
-        },
-        {
             linkText: PageTitles.USERS,
             link: "/users"
         },

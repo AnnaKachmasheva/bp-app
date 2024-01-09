@@ -1,0 +1,20 @@
+@import '/code-bp-ui/src/colors';
+
+.title {
+  justify-content: flex-start;
+}
+
+.tableInfo {
+  display: inline-flex;
+  align-items: center;
+  align-content: center;
+  width: 100%;
+
+  h4 {
+    font-size: 1.1em;
+  }
+}
+
+.danger {
+  color: $danger-btn-color;
+}

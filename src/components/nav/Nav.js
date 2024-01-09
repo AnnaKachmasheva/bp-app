@@ -9,6 +9,7 @@ import Button, {ButtonSize, ButtonType} from "../button/Button";
 import {ModalProduct} from "../../pages/inventory-page/modalWindowProduct/ModalProduct";
 import MOCK_DATA from "../../pages/inventory-page/MOCK_DATA.json";
 import {ModalScanQRCode} from "../scanner/window-scan-QR/ModalScanQRCode";
+import {toStringForQRCode} from "../../utils/Common";
 
 const Nav = (props) => {
 
@@ -22,8 +23,12 @@ const Nav = (props) => {
     const [showModalScanQr, setShowModalScanQr] = useState(false);
     const [scanMethod, setScanMethod] = useState(QRScanLibraries[0]);
     const [data, setData] = useState(null);
+    const [error, setError] = useState(null);
 
     const toggleDropdownListLibraries = () => {
+        setData(null);
+        setError(null);
+
         setShowDropdownListLibraries(!showDropdownListLibraries);
     };
 
@@ -32,8 +37,64 @@ const Nav = (props) => {
         setShowModalScanQr(true);
     };
 
+    const handleError = errorMessage => {
+        setError(errorMessage)
+    }
+
     const handleData = data => {
         setData(data);
+
+        // check data
+        if (data != null) {
+            // get uuid
+            const uuid = getuuid(data);
+            if (uuid == null) {
+                handleError('UUID not found in scanned data')
+            } else {
+
+                // get variant by uuid
+                const variant = getVariantByUUID(uuid);
+                if (variant == null) {
+                    handleError('Not found variant by uuid: ' + uuid)
+                } else {
+                    // check parameters
+                    const foundVariantStr = toStringForQRCode(variant);
+
+                    // check if data valid
+                    if (foundVariantStr === data) {
+                        handleError('Found variant: ' + variant)
+                    } else {
+                        handleError('QR code contains invalid data')
+                    }
+                }
+            }
+        }
+    }
+
+
+    function getuuid(data) {
+        // Define a regular expression to match the UUID
+        const uuidRegex = /uuid:(.+)/;
+
+        // Use the regex to find the UUID in the string
+        const match = data.match(uuidRegex);
+
+        // Extract the UUID if a match is found
+        return match ? match[1] : null;
+    }
+
+    function getVariantByUUID(uuid) {
+        for (const category of mocData.categories) {
+            for (const item of category.items) {
+                for (const variant of item.variants) {
+                    if (variant.uuid === uuid) {
+                        return variant;
+                    }
+                }
+            }
+        }
+        // If variant is not found
+        return null;
     }
 
     function renderAddButton(title) {
@@ -121,6 +182,7 @@ const Nav = (props) => {
             <ModalScanQRCode onClose={() => setShowModalScanQr(false)}
                              show={showModalScanQr}
                              data={data}
+                             error={error}
                              handleData={handleData}
                              scanMethod={scanMethod}/>
 

@@ -41,7 +41,7 @@ export const ModalProduct = (props) => {
         });
 
         function handleSaveProduct() {
-            //todo
+            // todo
         }
 
         let numberVariants = 1;
@@ -71,6 +71,12 @@ export const ModalProduct = (props) => {
             isAddAttributeFormShow = true;
         }
 
+        let isAddCategoryFormShow = false;
+
+        function handleAddCategory() {
+            isAddCategoryFormShow = true;
+        }
+
         function renderAddAttributeForm() {
             if (isAddAttributeFormShow) {
                 return <AttributeForm/>
@@ -96,7 +102,7 @@ export const ModalProduct = (props) => {
                                 <div className={'form-row'}>
 
                                     <div className={'form-input'}>
-                                        <label>Name</label>
+                                        <label>Name*</label>
                                         <Field type={'text'}
                                                className={'form-control '
                                                    + (values.name === '' && !touched.name ?
@@ -121,11 +127,12 @@ export const ModalProduct = (props) => {
                                                 )}
                                             </Field>
                                         </div>
-
-                                        <Button type={ButtonType[3].type}
-                                                onClick={() => addCategory()}
-                                                size={ButtonSize[1].size}
-                                                icon={<FaPlus/>}/>
+                                        {!isAddCategoryFormShow ?
+                                            <Button type={ButtonType[3].type}
+                                                    onClick={() => handleAddCategory()}
+                                                    size={ButtonSize[1].size}
+                                                    icon={<FaPlus/>}/> : null
+                                        }
                                     </div>
                                 </div>
 
@@ -191,6 +198,10 @@ export const ModalProduct = (props) => {
     )
 }
 
+class CategoryForm extends Component {
+
+}
+
 class VariantForm extends Component {
 
     render() {
@@ -199,7 +210,7 @@ class VariantForm extends Component {
 
                 <div className={'form-row'}>
                     <div className={'form-input'}>
-                        <label>Quantity</label>
+                        <label>Quantity*</label>
                         <Field
                             type={'number'}
                             step={1}
@@ -211,7 +222,7 @@ class VariantForm extends Component {
                     </div>
 
                     <div className={'form-input'}>
-                        <label>Min quantity</label>
+                        <label>Min quantity*</label>
                         <Field
                             type={'number'}
                             step={1}
@@ -225,7 +236,7 @@ class VariantForm extends Component {
 
                 <div className={'form-row'}>
                     <div className={'form-input'}>
-                        <label>Price</label>
+                        <label>Price*</label>
                         <Field
                             type={'number'}
                             step={0.1}
@@ -264,7 +275,7 @@ class AttributeForm extends Component {
                 <div className={'form-row'}>
 
                     <div className={'form-input'}>
-                        <label>Name</label>
+                        <label>Name*</label>
                         <Field
                             type={'text'}
                             className={'form-control'}
@@ -275,7 +286,7 @@ class AttributeForm extends Component {
                     </div>
 
                     <div className={'form-input'}>
-                        <label>Value</label>
+                        <label>Value*</label>
                         <Field
                             type={'text'}
                             className={'form-control'}

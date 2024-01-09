@@ -11,21 +11,29 @@
           "variants": [
             {
               "id": 101,
-              "color": "Silver",
-              "storage": "512GB SSD",
+              "uuid": "7cfcb19e-3d3a-4e9f-a22d-2893b6c9f67a",
               "price": 1099.99,
               "minQuantity": 100,
               "quantity": 1000,
-              "photo": "laptop_silver.jpg"
+              "photo": "laptop_silver.jpg",
+              "options": [
+                {"color": "Silver"},
+                {"color": "Blue"},
+                {"size": "15 inches"}
+              ]
             },
             {
               "id": 102,
-              "color": "Space Gray",
-              "storage": "1TB SSD",
+              "uuid": "9d8765a8-f4e0-4a14-b5b6-3c74a21c31a2",
               "price": 1299.99,
               "minQuantity": 80,
               "quantity": 800,
-              "photo": "laptop_space_gray.jpg"
+              "photo": "laptop_space_gray.jpg",
+              "options": [
+                {"color": "Space Gray"},
+                {"color": "Black"},
+                {"size": "17 inches"}
+              ]
             }
           ]
         },
@@ -37,21 +45,30 @@
           "variants": [
             {
               "id": 201,
-              "color": "Black",
-              "storage": "128GB",
+              "uuid": "1a3e0f6b-5d3d-4ec4-9260-75a6c9185b62",
               "price": 599.99,
               "minQuantity": 50,
               "quantity": 500,
-              "photo": "smartphone_black.jpg"
+              "photo": "smartphone_black.jpg",
+              "options": [
+                {"color": "Black"},
+                {"color": "Gold"},
+                {"size": "5.5 inches"}
+              ]
             },
             {
               "id": 202,
-              "color": "White",
+              "uuid": "af6e93c2-64ef-4f8f-9c67-4d57e0ccf6a3",
               "storage": "256GB",
               "price": 699.99,
               "minQuantity": 30,
               "quantity": 300,
-              "photo": "smartphone_white.jpg"
+              "photo": "smartphone_white.jpg",
+              "options": [
+                {"color": "White"},
+                {"color": "Silver"},
+                {"size": "6 inches"}
+              ]
             }
           ]
         }
@@ -68,21 +85,27 @@
           "variants": [
             {
               "id": 101,
-              "size": "Small",
-              "color": "Blue",
+              "uuid": "b5a3f041-8c4a-4d13-9ee5-9502de458f88",
               "price": 29.99,
               "minQuantity": 100,
               "quantity": 1000,
-              "photo": "tshirt_blue.jpg"
+              "photo": "tshirt_blue.jpg",
+              "options": [
+                {"size": "Medium"},
+                {"season": "Summer"}
+              ]
             },
             {
               "id": 102,
-              "size": "Medium",
-              "color": "Red",
+              "uuid": "5d72916d-34bd-4eeb-8a92-23dcefd52ff7",
               "price": 29.99,
               "minQuantity": 80,
               "quantity": 800,
-              "photo": "tshirt_red.jpg"
+              "photo": "tshirt_red.jpg",
+              "options": [
+                {"size": "Large"},
+                {"season": "Winter"}
+              ]
             }
           ]
         },
@@ -94,21 +117,27 @@
           "variants": [
             {
               "id": 201,
-              "size": "32x30",
-              "color": "Dark Blue",
+              "uuid": "7e2f8c1a-ae94-4c9a-9231-0e99f51f647c",
               "price": 49.99,
               "minQuantity": 30,
               "quantity": 300,
-              "photo": "jeans_dark_blue.jpg"
+              "photo": "jeans_dark_blue.jpg",
+              "options": [
+                {"size": "34x32"},
+                {"season": "Spring"}
+              ]
             },
             {
               "id": 202,
-              "size": "34x32",
-              "color": "Light Blue",
+              "uuid": "3be38e3d-496e-48e7-9148-67aa8478a77a",
               "price": 49.99,
               "minQuantity": 20,
               "quantity": 200,
-              "photo": "jeans_light_blue.jpg"
+              "photo": "jeans_light_blue.jpg",
+              "options": [
+                {"size": "36x34"},
+                {"season": "Fall"}
+              ]
             }
           ]
         }
@@ -125,21 +154,31 @@
           "variants": [
             {
               "id": 101,
-              "format": "Paperback",
-              "author": "F. Scott Fitzgerald",
+              "uuid": "9a7c3a4b-dc0e-4a5e-82cc-64c319d76439",
               "price": 12.99,
               "minQuantity": 50,
               "quantity": 500,
-              "photo": "gatsby_paperback.jpg"
+              "photo": "gatsby_paperback.jpg",
+              "options": [
+                {"format": "Paperback"},
+                {"author": "F. Scott Fitzgerald"},
+                {"format": "E-book"},
+                {"genre": "Fiction"}
+              ]
             },
             {
               "id": 102,
-              "format": "Hardcover",
-              "author": "F. Scott Fitzgerald",
+              "uuid": "c6bfaf05-0bf2-4c2d-96c9-c992b96318f8",
               "price": 24.99,
               "minQuantity": 30,
               "quantity": 300,
-              "photo": "gatsby_hardcover.jpg"
+              "photo": "gatsby_hardcover.jpg",
+              "options": [
+                {"format": "Hardcover"},
+                {"author": "F. Scott Fitzgerald"},
+                {"format": "Audiobook"},
+                {"genre": "Classic"}
+              ]
             }
           ]
         },
@@ -151,21 +190,31 @@
           "variants": [
             {
               "id": 201,
-              "format": "E-book",
-              "author": "Harper Lee",
+              "uuid": "a1d5c0ab-e2e8-4e4a-bdc3-951f58c3ecf5",
               "price": 9.99,
               "minQuantity": 40,
               "quantity": 400,
-              "photo": "mockingbird_ebook.jpg"
+              "photo": "mockingbird_ebook.jpg",
+              "options": [
+                {"format": "E-book"},
+                {"author": "Harper Lee"},
+                {"format": "Hardcover"},
+                {"genre": "Drama"}
+              ]
             },
             {
               "id": 202,
-              "format": "Audiobook",
-              "author": "Harper Lee",
+              "uuid": "f0c34706-09a8-4c6f-8c24-3f0a88a77793",
               "price": 19.99,
               "minQuantity": 20,
               "quantity": 200,
-              "photo": "mockingbird_audiobook.jpg"
+              "photo": "mockingbird_audiobook.jpg",
+              "options": [
+                {"format": "Audiobook"},
+                {"author": "Harper Lee"},
+                {"format": "Paperback"},
+                {"genre": "Historical Fiction"}
+              ]
             }
           ]
         }
@@ -182,21 +231,31 @@
           "variants": [
             {
               "id": 101,
-              "type": "Drip Coffee Maker",
-              "brand": "BrewMaster",
+              "uuid": "0f8f2db1-0d67-4e5d-9aeb-4ee0a9771d7d",
               "price": 49.99,
               "minQuantity": 30,
               "quantity": 300,
-              "photo": "coffee_maker_drip.jpg"
+              "photo": "coffee_maker_drip.jpg",
+              "options": [
+                {"type": "Drip Coffee Maker"},
+                {"brand": "BrewMaster"},
+                {"type": "Espresso Machine"},
+                {"power": "800W"}
+              ]
             },
             {
               "id": 102,
-              "type": "Espresso Machine",
-              "brand": "EspressoElite",
+              "uuid": "1e281cd3-c7ea-4f8c-88d2-d0a2a6312c8f",
               "price": 149.99,
               "minQuantity": 15,
               "quantity": 150,
-              "photo": "coffee_maker_espresso.jpg"
+              "photo": "coffee_maker_espresso.jpg",
+              "options": [
+                {"type": "Espresso Machine"},
+                {"brand": "EspressoElite"},
+                {"type": "Drip Coffee Maker"},
+                {"power": "1200W"}
+              ]
             }
           ]
         },
@@ -208,21 +267,31 @@
           "variants": [
             {
               "id": 201,
-              "power": "500W",
-              "brand": "SmoothBlend",
+              "uuid": "46556e4c-4a6d-48b1-93d8-5c3bda1e1929",
               "price": 39.99,
               "minQuantity": 40,
-              "quantity": 400,
-              "photo": "blender_500w.jpg"
+              "quantity": 0,
+              "photo": "blender_500w.jpg",
+              "options": [
+                {"power": "500W"},
+                {"brand": "SmoothBlend"},
+                {"power": "700W"},
+                {"brand": "PowerCrush"}
+              ]
             },
             {
               "id": 202,
-              "power": "1000W",
-              "brand": "PowerCrush",
+              "uuid": "6dbbc9f5-b999-4f5d-9d63-8c8ac51a6ea5",
               "price": 69.99,
               "minQuantity": 25,
-              "quantity": 250,
-              "photo": "blender_1000w.jpg"
+              "quantity": 10,
+              "photo": "blender_1000w.jpg",
+              "options": [
+                {"power": "1000W"},
+                {"brand": "PowerCrush"},
+                {"power": "1200W"},
+                {"brand": "SmoothBlend"}
+              ]
             }
           ]
         }

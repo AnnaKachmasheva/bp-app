@@ -1,14 +1,16 @@
 import React from "react";
 import styles from './ModalScanQRCode.module.scss';
 import {AiOutlineClose} from "react-icons/ai";
-import Html5QrReaderComponent from "./selectedforsp/Html5QrReaderComponent";
+import Html5QrReaderComponent from "./scanComponents/Html5QrReaderComponent";
 import {QRScanLibraries} from "../../../utils/Constants";
-import QrScannerComponent from "./selectedforsp/QrScannerComponent";
-import ZxingComponent from "./selectedforsp/ZxingComponent";
-import ReactQRReaderComponent from "./selectedforsp/QRReaderComponent";
-import JsQRComponent from "./selectedforsp/JsQRComponent";
+import QrScannerComponent from "./scanComponents/QrScannerComponent";
+import ZxingComponent from "./scanComponents/ZxingComponent";
+import ReactQRReaderComponent from "./scanComponents/QRReaderComponent";
+import JsQRComponent from "./scanComponents/JsQRComponent";
+import ReactQrScannerComponent from "./scanComponents/ReactQrScannerComponent";
 
 export const ModalScanQRCode = (props) => {
+
     if (!props.show)
         return null;
 
@@ -32,7 +34,8 @@ export const ModalScanQRCode = (props) => {
                 return <ReactQRReaderComponent handleData={handleData}/>
             case QRScanLibraries[4].name:
                 return <JsQRComponent handleData={handleData}/>
-
+            case QRScanLibraries[5].name:
+                return <ReactQrScannerComponent handleData={handleData}/>
 
             default:
                 return null;
@@ -63,6 +66,11 @@ export const ModalScanQRCode = (props) => {
                     {props.data == null ?
                         null :
                         <p>Data: <span>{props.data}</span></p>
+                    }
+
+                    {props.error == null ?
+                        null :
+                        <p>Error: <span>{props.error}</span></p>
                     }
 
                 </div>

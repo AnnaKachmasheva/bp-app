@@ -5,13 +5,11 @@
 }
 
 .attributeForm {
-  background-color: $modal-background-color;
+  background-color: $grey-color;
   border-radius: 6px;
 
   padding: 20px;
   margin: 2vh 0;
-
-  color: $bg-color;
 
   button {
     margin-top: 2vh;
@@ -40,6 +38,7 @@
 .buttonContainer {
   display: inline-flex;
   justify-content: flex-end;
+  gap: 20px;
 
   button {
     width: 100%;
