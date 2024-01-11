@@ -16,9 +16,7 @@ export const QRScanLibraries = [
     {name: 'QrScanner', version: '1.4.2'},
     {name: 'ZXing', version: '0.20.0'},
     {name: 'qr-reader', version: '3.0.0'},
-    {name: 'jsqr', version: '1.4.0'},
-    {name: 'react-qr-scanner', version: '1.1.10'}
-
+    {name: 'jsqr', version: '1.4.0'}
 ];
 
 export const CountItems = [

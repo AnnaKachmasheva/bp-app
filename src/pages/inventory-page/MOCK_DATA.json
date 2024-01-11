@@ -15,7 +15,7 @@
               "price": 1099.99,
               "minQuantity": 100,
               "quantity": 1000,
-              "photo": "laptop_silver.jpg",
+              "photo": "",
               "options": [
                 {"color": "Silver"},
                 {"color": "Blue"},
@@ -28,7 +28,7 @@
               "price": 1299.99,
               "minQuantity": 80,
               "quantity": 800,
-              "photo": "laptop_space_gray.jpg",
+              "photo": "",
               "options": [
                 {"color": "Space Gray"},
                 {"color": "Black"},

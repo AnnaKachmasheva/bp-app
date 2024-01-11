@@ -11,7 +11,6 @@ function ScanComponent() {
 
         {value: 'react-qr-reader', label: 'react-qr-reader'},
         {value: 'react-zxing', label: 'react-zxing'},
-        {value: 'react-qr-scanner', label: 'react-qr-scanner'},
         {value: 'quagga', label: 'quagga'},
         {value: 'jsqr', label: 'jsqr'}
     ];

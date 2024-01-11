@@ -7,7 +7,6 @@ import QrScannerComponent from "./scanComponents/QrScannerComponent";
 import ZxingComponent from "./scanComponents/ZxingComponent";
 import ReactQRReaderComponent from "./scanComponents/QRReaderComponent";
 import JsQRComponent from "./scanComponents/JsQRComponent";
-import ReactQrScannerComponent from "./scanComponents/ReactQrScannerComponent";
 
 export const ModalScanQRCode = (props) => {
 
@@ -34,8 +33,6 @@ export const ModalScanQRCode = (props) => {
                 return <ReactQRReaderComponent handleData={handleData}/>
             case QRScanLibraries[4].name:
                 return <JsQRComponent handleData={handleData}/>
-            case QRScanLibraries[5].name:
-                return <ReactQrScannerComponent handleData={handleData}/>
 
             default:
                 return null;
