@@ -26,7 +26,7 @@ export const ModalQRCode = (props) => {
                 />
 
                 {/* code data */}
-                <p>Data: <span>{props.data}</span></p>
+                {/*<p>Data: <span>{props.data}</span></p>*/}
 
                 <div className={'buttons'}>
 

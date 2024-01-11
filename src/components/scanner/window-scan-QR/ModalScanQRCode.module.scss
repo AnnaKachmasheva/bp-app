@@ -1,9 +1,11 @@
 @import '/code-bp-ui/src/colors';
 
 .scanContainer {
-  padding: 0;
   width: 400px;
   height: 400px;
+
+  margin-bottom: 100px;
+
 
   p {
     font-size: 1.4em;
@@ -26,6 +28,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
 
   .icon {
     cursor: pointer;

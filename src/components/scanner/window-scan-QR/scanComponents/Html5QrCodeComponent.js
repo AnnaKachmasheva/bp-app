@@ -3,7 +3,7 @@ import {Html5QrcodeScanner} from "html5-qrcode";
 import styles from "./ScannerComponent.module.scss";
 
 
-const Html5QrReaderComponent = (props) => {
+const Html5QrCodeComponent = (props) => {
 
     // id of the HTML element
     const qrcodeRegionId = "html5qr-code-full-region";
@@ -57,4 +57,4 @@ const Html5QrReaderComponent = (props) => {
 };
 
 
-export default Html5QrReaderComponent;
+export default Html5QrCodeComponent;

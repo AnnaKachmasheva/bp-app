@@ -45,7 +45,6 @@
           "variants": [
             {
               "id": 201,
-              "uuid": "1a3e0f6b-5d3d-4ec4-9260-75a6c9185b62",
               "price": 599.99,
               "minQuantity": 50,
               "quantity": 500,
@@ -58,7 +57,6 @@
             },
             {
               "id": 202,
-              "uuid": "af6e93c2-64ef-4f8f-9c67-4d57e0ccf6a3",
               "storage": "256GB",
               "price": 699.99,
               "minQuantity": 30,
@@ -85,7 +83,6 @@
           "variants": [
             {
               "id": 101,
-              "uuid": "b5a3f041-8c4a-4d13-9ee5-9502de458f88",
               "price": 29.99,
               "minQuantity": 100,
               "quantity": 1000,
@@ -97,7 +94,6 @@
             },
             {
               "id": 102,
-              "uuid": "5d72916d-34bd-4eeb-8a92-23dcefd52ff7",
               "price": 29.99,
               "minQuantity": 80,
               "quantity": 800,
@@ -117,7 +113,6 @@
           "variants": [
             {
               "id": 201,
-              "uuid": "7e2f8c1a-ae94-4c9a-9231-0e99f51f647c",
               "price": 49.99,
               "minQuantity": 30,
               "quantity": 300,
@@ -129,7 +124,6 @@
             },
             {
               "id": 202,
-              "uuid": "3be38e3d-496e-48e7-9148-67aa8478a77a",
               "price": 49.99,
               "minQuantity": 20,
               "quantity": 200,
@@ -154,7 +148,6 @@
           "variants": [
             {
               "id": 101,
-              "uuid": "9a7c3a4b-dc0e-4a5e-82cc-64c319d76439",
               "price": 12.99,
               "minQuantity": 50,
               "quantity": 500,
@@ -168,7 +161,6 @@
             },
             {
               "id": 102,
-              "uuid": "c6bfaf05-0bf2-4c2d-96c9-c992b96318f8",
               "price": 24.99,
               "minQuantity": 30,
               "quantity": 300,
@@ -190,7 +182,6 @@
           "variants": [
             {
               "id": 201,
-              "uuid": "a1d5c0ab-e2e8-4e4a-bdc3-951f58c3ecf5",
               "price": 9.99,
               "minQuantity": 40,
               "quantity": 400,
@@ -204,7 +195,6 @@
             },
             {
               "id": 202,
-              "uuid": "f0c34706-09a8-4c6f-8c24-3f0a88a77793",
               "price": 19.99,
               "minQuantity": 20,
               "quantity": 200,
@@ -231,7 +221,6 @@
           "variants": [
             {
               "id": 101,
-              "uuid": "0f8f2db1-0d67-4e5d-9aeb-4ee0a9771d7d",
               "price": 49.99,
               "minQuantity": 30,
               "quantity": 300,
@@ -245,7 +234,6 @@
             },
             {
               "id": 102,
-              "uuid": "1e281cd3-c7ea-4f8c-88d2-d0a2a6312c8f",
               "price": 149.99,
               "minQuantity": 15,
               "quantity": 150,
@@ -267,7 +255,6 @@
           "variants": [
             {
               "id": 201,
-              "uuid": "46556e4c-4a6d-48b1-93d8-5c3bda1e1929",
               "price": 39.99,
               "minQuantity": 40,
               "quantity": 0,
@@ -281,7 +268,6 @@
             },
             {
               "id": 202,
-              "uuid": "6dbbc9f5-b999-4f5d-9d63-8c8ac51a6ea5",
               "price": 69.99,
               "minQuantity": 25,
               "quantity": 10,

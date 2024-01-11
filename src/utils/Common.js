@@ -46,7 +46,7 @@ export const formatDatetime = (datetime) => {
  */
 export const toStringForQRCode = (jsonObject) => {
     // Extract the required properties from the JSON object
-    const {id, uuid, price, minQuantity, quantity, photo, options} = jsonObject;
+    const {id, price, minQuantity, quantity, photo, options} = jsonObject;
 
     // Process options array and create a string
     const optionsString = options.map(option => {
@@ -55,5 +55,5 @@ export const toStringForQRCode = (jsonObject) => {
     }).join('');
 
     // Construct the final string with both required and optional parameters
-    return `uuid:${uuid}/id:${id},price:${price},minQuantity:${minQuantity},quantity:${quantity},photo:${photo}${optionsString}`;
+    return `id:${id},price:${price},minQuantity:${minQuantity},quantity:${quantity},photo:${photo}${optionsString}`;
 }

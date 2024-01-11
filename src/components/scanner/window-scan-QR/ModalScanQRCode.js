@@ -1,7 +1,7 @@
 import React from "react";
 import styles from './ModalScanQRCode.module.scss';
 import {AiOutlineClose} from "react-icons/ai";
-import Html5QrReaderComponent from "./scanComponents/Html5QrReaderComponent";
+import Html5QrCodeComponent from "./scanComponents/Html5QrCodeComponent";
 import {QRScanLibraries} from "../../../utils/Constants";
 import QrScannerComponent from "./scanComponents/QrScannerComponent";
 import ZxingComponent from "./scanComponents/ZxingComponent";
@@ -22,7 +22,7 @@ export const ModalScanQRCode = (props) => {
         switch (props.scanMethod.name) {
 
             case QRScanLibraries[0].name:
-                return <Html5QrReaderComponent handleData={handleData}/>
+                return <Html5QrCodeComponent handleData={handleData}/>
             case QRScanLibraries[1].name:
                 return <QrScannerComponent handleData={handleData}
                                            fps={10}

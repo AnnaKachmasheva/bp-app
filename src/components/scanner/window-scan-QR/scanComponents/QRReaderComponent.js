@@ -6,7 +6,7 @@ import styles from './ScannerComponent.module.scss';
 const QRReaderComponent = (props) => {
 
     return (
-        <div className={styles.cameraWrapper}>
+        <div>
             <QrReader
                 onResult={(result, error) => {
                     if (!!result) {
