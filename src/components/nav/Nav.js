@@ -3,8 +3,6 @@ import styles from './Nav.module.scss';
 import {AiOutlinePlus} from "react-icons/ai";
 import {BsQrCodeScan} from "react-icons/bs";
 import {PageTitles, QRScanLibraries} from "../../utils/Constants";
-import {ModalAddUser} from "../../pages/users-page/window-add-user/ModalAddUser";
-import {ModalAddTag} from "../../pages/users-page/window-add-tag/ModalAddTag";
 import Button, {ButtonSize, ButtonType} from "../button/Button";
 import {ModalProduct} from "../../pages/inventory-page/modalWindowProduct/ModalProduct";
 import MOCK_DATA from "../../pages/inventory-page/MOCK_DATA.json";
@@ -174,10 +172,8 @@ const Nav = (props) => {
                           categories={mocData.categories}
                           show={showAddItem}/>
 
-            <ModalAddUser onClose={() => setShowAddUser(false)}
-                          show={showAddUser}/>
-            <ModalAddTag onClose={() => setShowAddTag(false)}
-                         show={showAddTag}/>
+            {/*<ModalAddUser onClose={() => setShowAddUser(false)}*/}
+            {/*              show={showAddUser}/>*/}
 
             <ModalScanQRCode onClose={() => setShowModalScanQr(false)}
                              show={showModalScanQr}

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Route, Routes} from 'react-router-dom'
+import {Navigate, Route, Routes} from 'react-router-dom'
 import './App.scss'
 import {routes} from "./routes/Routes";
 import ProductPage from "./pages/product-page/ProductPage";
@@ -22,6 +22,8 @@ function App() {
                        path="app/product/:id"
                        element={<BasicPage page={<ProductPage/>}
                                            title={PageTitles.INVENTORY}/>}/>
+
+                <Route path="/" element={<Navigate replace to="app/dashboard" />} />
             </Routes>
 
         </div>

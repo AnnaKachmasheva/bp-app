@@ -19,8 +19,6 @@ function UsersPage() {
     return (
         <div className={'content'}>
 
-
-
             <div className={'panel'}>
                 <table>
                     <thead>
