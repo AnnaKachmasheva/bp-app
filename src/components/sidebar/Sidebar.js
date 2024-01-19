@@ -49,7 +49,8 @@ const Sidebar = (props) => {
     }
 
     return (
-        <div className={styles.sidebarContainer.concat(' sidebar')}>
+        <div className={styles.sidebarContainer
+            .concat(' sidebar')}>
             <div className={styles.logoContainer}>
                 <img src={logo}
                      onClick={handleClickLogo}
@@ -57,7 +58,9 @@ const Sidebar = (props) => {
             </div>
 
             <div className={styles.burgerButton}>
-                <RxHamburgerMenu onClick={() => {setBurgerMenuOpen(!isBurgerMenuOpen)}}
+                <RxHamburgerMenu onClick={() => {
+                    setBurgerMenuOpen(!isBurgerMenuOpen)
+                }}
                                  size={34}
                                  className={styles.iconBurger}/>
             </div>

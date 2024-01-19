@@ -292,6 +292,10 @@ li:hover {
       max-width: 80vw;
     }
 
+    .buttons {
+      margin-bottom: 80px;
+    }
+
   }
 }
 
@@ -461,5 +465,9 @@ input:disabled {
 .code {
   width: 230px;
   margin: 2vh 0;
+}
+
+.fullScreen {
+  height: 100vh;
 }
 

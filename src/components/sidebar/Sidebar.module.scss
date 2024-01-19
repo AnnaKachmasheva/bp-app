@@ -142,14 +142,18 @@
     display: block;
 
     width: 100vw;
-    height: auto;
+    height: fit-content;
   }
 
     /* Отображаем бургер-меню на мобильных устройствах */
   .burgerMenu {
     display: grid;
-    grid-template-rows: 70px 70px 70px 70px 70px 70px calc(100% - 700px) 70px;
+    grid-template-rows: 70px 70px 70px 70px 70px auto;
     background: $green-color;
     border: 1px solid $green-color;
   }
 }
+//
+//.fullContainer > div{
+//  height: 100vh;
+//}
