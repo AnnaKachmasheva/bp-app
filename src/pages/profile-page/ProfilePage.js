@@ -67,27 +67,15 @@ function ProfilePage() {
 
                 <div className={styles.userInfo}>
                     <div className={styles.infoColumn}>
-                        <ul className={styles.labels}>
-                            {titles.map((title, i) => {
-                                return (<li className={'title'} key={i}>{title}</li>);
-                            })}
-                        </ul>
-
-                        <ul>
-                            <li>{user.firstName}</li>
-                            <li>{user.lastName}</li>
-                            <li>{user.email}</li>
-                            <li>{user.phone}</li>
-                        </ul>
+                        <p>User role: <span>USER</span></p>
+                        <p>First name: <span>{user.firstName}</span></p>
+                        <p>Last name: <span>{user.lastName}</span></p>
+                        <p>Email: <span>{user.email}</span></p>
+                        <p>Phone: <span>{user.phone}</span></p>
                     </div>
 
-                    <div className={styles.infoColumn}>
-                        <ul className={styles.labels}>User role</ul>
 
-                        <ul>USER</ul>
-                    </div>
-
-                    <div className={styles.buttonsContainer}>
+                    <div className={'buttons '.concat(styles.buttons)}>
 
                         <Button label={'Change password'}
                                 type={ButtonType[3].type}

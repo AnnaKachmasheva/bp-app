@@ -83,13 +83,12 @@ body {
 @media (max-width: 768px) {
 
   .content {
-    margin-top: 32px;
+    margin-top: 0;
   }
 }
 
 
 // tables
-
 table {
   border-collapse: collapse;
   width: 98%;
@@ -293,7 +292,7 @@ li:hover {
     }
 
     .buttons {
-      margin-bottom: 80px;
+      margin-bottom: 30px;
     }
 
   }
@@ -443,7 +442,7 @@ input:disabled {
 
 // card
 .card-title-container {
-  width: 100%;
+  width: 90%;
   display: inline-flex;
   align-items: center;
   justify-content: space-between

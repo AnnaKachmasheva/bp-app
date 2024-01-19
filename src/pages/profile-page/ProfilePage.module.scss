@@ -1,15 +1,14 @@
 @import '../../././colors.scss';
 
 .userInfo {
-  width: auto;
+  width: 85%;
   height: auto;
 
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
 
   margin-top: 2vh;
-  padding: 2vw 2vh;
+  padding: 4vw 4vh;
 
   font-size: 1em;
 
@@ -21,20 +20,9 @@
     color: $form-sub-tile-color;
   }
 
-  li {
-    padding-top: 2vh;
-  }
-
   .infoColumn {
     display: flex;
-    flex-direction: row;
-    margin-left: 10vw;
-
-    ul {
-      display: flex;
-      flex-direction: column;
-      padding: 0 10px;
-    }
+    flex-direction: column;
   }
 
   .labels {
@@ -43,15 +31,14 @@
     color: $form-sub-tile-color;
   }
 
-  .buttonsContainer {
-    display: flex;
-    flex-direction: column;
-    align-self: flex-end;
+  button {
+    margin-top: 2vh;
+    width: 100%;
+  }
 
-    button {
-      margin-top: 2vh;
-      width: 100%;
-    }
+  .buttons{
+    display: inline-flex;
+    gap: 20px;
   }
 }
 

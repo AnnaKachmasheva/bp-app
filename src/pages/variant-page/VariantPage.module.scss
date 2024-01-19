@@ -62,12 +62,14 @@
 
   button {
     width: 10vw;
-    min-width: 50px;
+    min-width: 80px;
   }
 }
 
 @media (max-width: 768px) {
+
   .container {
     flex-direction: column;
+    margin-top: 0;
   }
 }
