@@ -3,7 +3,8 @@ export const PageTitles = {
     TAGS: 'Tags',
     INVENTORY: 'Inventory',
     DASHBOARD: 'Dashboard',
-    PROFILE: 'Profile'
+    PROFILE: 'Profile',
+    SEARCH: 'Scan'
 };
 
 export const UserRole = {

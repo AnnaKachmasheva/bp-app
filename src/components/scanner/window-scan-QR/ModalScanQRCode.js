@@ -25,7 +25,7 @@ export const ModalScanQRCode = (props) => {
             case QRScanLibraries[1].name:
                 return <QrScannerComponent handleData={handleData}
                                            fps={10}
-                                           qrbox={250}
+                                           qrbox={300}
                                            disableFlip={false}/>
             case QRScanLibraries[2].name:
                 return <ZxingComponent handleData={handleData}/>
@@ -52,8 +52,6 @@ export const ModalScanQRCode = (props) => {
                     onClick={props.onClose}
                     size={40}
                 />
-
-                <h2>Scan</h2>
 
                 <div className={styles.scanContainer}>
                     <p>Selected library: <span>{props.scanMethod.name} {props.scanMethod.version}</span></p>

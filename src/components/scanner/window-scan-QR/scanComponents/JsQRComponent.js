@@ -1,5 +1,6 @@
 import React, {useEffect, useRef} from "react";
 import jsQR from "jsqr";
+import styles from "./ScannerComponent.module.scss";
 
 
 const JsQRComponent = (props) => {
@@ -54,7 +55,7 @@ const JsQRComponent = (props) => {
 
 
     return (
-        <div>
+        <div className={styles.cameraContainer}>
             <video
                 ref={videoRef}
                 style={{width: '100%'}}

@@ -137,10 +137,13 @@ const Nav = (props) => {
                                 />
                             </div>
 
-                            <Button type={ButtonType[3].type}
-                                    size={ButtonSize[2].size}
-                                    onClick={toggleDropdownListLibraries}
-                                    icon={<BsQrCodeScan/>}/>
+                            <div className={styles.searchBtn}>
+                                <Button type={ButtonType[3].type}
+                                        size={ButtonSize[2].size}
+                                        onClick={toggleDropdownListLibraries}
+                                        icon={<BsQrCodeScan/>}/>
+                            </div>
+
                         </div>
 
                         {showDropdownListLibraries && (

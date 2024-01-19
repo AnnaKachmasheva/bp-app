@@ -1,4 +1,4 @@
-import React, {Component, useState} from "react";
+import React, {Component, useEffect, useState} from "react";
 import {CountItems} from "../../utils/Constants";
 import Pagination from "../../components/pagination/Pagination";
 import {IoQrCodeOutline} from "react-icons/io5";
@@ -6,6 +6,8 @@ import {formatNumberWithSpaces, toStringForQRCode} from "../../utils/Common";
 import styles from './ProductPage.module.scss';
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import {ModalQRCode} from "../../components/scanner/window-show-QR/ModalQRCode";
+import Button, {ButtonSize, ButtonType} from "../../components/button/Button";
+import {FaArrowRight} from "react-icons/fa";
 
 
 function ProductPage() {
@@ -15,11 +17,25 @@ function ProductPage() {
 
     // State variables for managing UI interactions and data selection
     const [selectedNumber, setSelectedNumber] = useState(5)
+    const [isMobile, setIsMobile] = useState(false)
 
     const {id} = useParams();
     const {state} = useLocation();
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        handleResize()
+        window.addEventListener("resize", handleResize)
+    })
+
+    const handleResize = () => {
+        if (window.innerWidth < 720) {
+            setIsMobile(true)
+        } else {
+            setIsMobile(false)
+        }
+    }
 
     // Event handlers for various UI interactions like dropdown toggle, category selection, etc
     const setSelectedOption = (option) => {
@@ -71,22 +87,35 @@ function ProductPage() {
 
 
                 {/* item's table */}
-                <table>
-                    <thead>
-                    <tr>
-                        {headers.map((header, index) => <HeaderItem title={header}/>)}
-                    </tr>
-                    </thead>
+                {!isMobile &&
 
-                    <tbody>
-                    {state?.product.variants.map((variant) =>
-                        <TableRowGroupItem item={variant}
-                                           handleClick={() => goToVariantPage(variant)}
-                                           showVariant={()=>goToVariantPage(variant)}/>
-                    )}
-                    </tbody>
+                    <table>
+                        <thead>
+                        <tr>
+                            {headers.map((header, index) => <HeaderItem title={header}/>)}
+                        </tr>
+                        </thead>
 
-                </table>
+                        <tbody>
+                        {state?.product.variants.map((variant) =>
+                            <TableRowGroupItem item={variant}
+                                               handleClick={() => goToVariantPage(variant)}
+                                               showVariant={() => goToVariantPage(variant)}/>
+                        )}
+                        </tbody>
+
+                    </table>
+                }
+
+                {isMobile &&
+                    <div>
+                        {state?.product.variants.map((variant) =>
+                            <CardItem item={variant}
+                                      handleClick={() => goToVariantPage(variant)}
+                                      showVariant={() => goToVariantPage(variant)}/>
+                        )}
+                    </div>
+                }
             </div>
 
             <div className={"container-pagination"}>
@@ -168,6 +197,66 @@ class TableRowGroupItem extends Component {
                     <IoQrCodeOutline onClick={this.handleShowQRCode}/>}
                 </td>
             </tr>
+        )
+    }
+}
+
+class CardItem extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            showQR: false
+        };
+    }
+
+    handleShowQRCode = () => {
+        this.setState(() => ({
+            showQR: true,
+        }));
+    }
+
+    showVariant = () => {
+        this.props.showVariant();
+    }
+
+    render() {
+        const {showQR} = this.state;
+        const isLessThanMin = this.props.item.quantity <= this.props.item.minQuantity;
+
+        return (
+            <div className={styles.card}>
+                <ModalQRCode onClose={() => this.setState({showQR: false})}
+                             data={toStringForQRCode(this.props.item)}
+                             showVariant={() => this.showVariant()}
+                             show={showQR}/>
+
+                <img src={this.props.item.photo}
+                     alt={this.props.item.photo}/>
+
+                <p><span>Price: </span>{this.props.item.price}</p>
+                <p className={isLessThanMin ? styles.danger : ''}><span>Quantity: </span>{this.props.item.quantity}</p>
+                <p><span>Min quantity: </span>{this.props.item.minQuantity}</p>
+                <p>
+                    <span>Total value: </span>{formatNumberWithSpaces(this.props.item.quantity * this.props.item.price)}
+                </p>
+
+                <div className={styles.cardBtns}>
+
+                    <Button onClick={this.handleShowQRCode}
+                            type={ButtonType[1].type}
+                            size={ButtonSize[1].size}
+                            icon={<IoQrCodeOutline/>}
+                    />
+
+                    <Button onClick={this.props.handleClick}
+                            type={ButtonType[2].type}
+                            size={ButtonSize[1].size}
+                            icon={<FaArrowRight/>}
+                    />
+                </div>
+
+            </div>
         )
     }
 }

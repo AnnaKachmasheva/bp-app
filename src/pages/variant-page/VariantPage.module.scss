@@ -38,7 +38,7 @@
       color: $form-sub-tile-color;
 
       span {
-        color: $text-color;
+        color: #4F4F4F;
       }
     }
   }
@@ -62,5 +62,11 @@
 
   button {
     width: 10vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
   }
 }

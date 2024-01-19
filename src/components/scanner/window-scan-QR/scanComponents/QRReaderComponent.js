@@ -1,6 +1,6 @@
 import React from "react";
 import {QrReader} from "react-qr-reader";
-import styles from './ScannerComponent.module.scss';
+import styles from "./ScannerComponent.module.scss";
 
 
 const QRReaderComponent = (props) => {
@@ -13,10 +13,11 @@ const QRReaderComponent = (props) => {
                         props.handleData(result?.text);
                     }
                     if (!!error) {
-                        console.info(error);
+                        // console.info(error);
                     }
                 }}
-                style={{width: '100%'}}
+
+                className={styles.qrReaderCameraContainer}
             />
         </div>
     );

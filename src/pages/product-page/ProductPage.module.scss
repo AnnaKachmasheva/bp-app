@@ -1,10 +1,12 @@
 @import '../../././colors.scss';
 
 .title {
+  margin-left: 20px;
   justify-content: flex-start;
 }
 
 .tableInfo {
+  margin-left: 20px;
   display: inline-flex;
   align-items: center;
   align-content: center;
@@ -17,4 +19,50 @@
 
 .danger {
   color: $danger-btn-color;
+}
+
+.card {
+  height: fit-content;
+  width: 80vw;
+  padding: 5vh 5vw;
+  margin: 2.5vw;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+
+  border-radius: 6px;
+  border: 1px solid $grey-color;
+  box-shadow: 0 0 6px $grey-color;
+
+  p {
+    margin: 4px;
+  }
+
+  span {
+    color: #4F4F4F;
+  }
+}
+
+.cardBtns {
+  display: inline-flex;
+  margin-top: 20px;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .tableInfo {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+
+    h4 {
+      margin: 0;
+      padding: 0;
+    }
+
+    .title {
+      display: none;
+    }
+  }
 }

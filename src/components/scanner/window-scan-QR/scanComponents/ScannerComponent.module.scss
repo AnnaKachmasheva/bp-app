@@ -1,15 +1,27 @@
 .cameraWrapper {
   height: fit-content;
   width: fit-content;
-  min-width: 400px;
-
   margin: 10px;
 
-  //background-image: url(../../../assets/border.svg);
-  //background-repeat: no-repeat;
-
   .cameraContainer {
-    height: 400px;
-    width: 300px;
+    //height: auto;
+    width: fit-content;
+    max-width: 400px;
+    margin: 0 auto;
   }
+
+}
+
+.qrReaderCameraContainer {
+  margin-top: -50px;
+}
+
+@media (max-width: 460px) {
+  .cameraWrapper {
+
+    .cameraContainer {
+      max-width: 300px;
+    }
+  }
+
 }

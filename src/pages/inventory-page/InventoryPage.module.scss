@@ -25,3 +25,50 @@ ul {
   border: 1px solid $border-color;
   box-shadow: 0 0 5px $modal-box-shadow-color;
 }
+
+.card {
+  height: fit-content;
+  padding: 20px;
+  margin: 20px ;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+
+  border-radius: 6px;
+  border: 1px solid $grey-color;
+  box-shadow: 0 0 6px $grey-color;
+
+  p {
+    margin: 4px;
+  }
+
+  span {
+    color: #4F4F4F;
+  }
+}
+
+.cardButtons {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: start;
+
+  button {
+    height: 40px;
+  }
+
+  img {
+    height: 100px;
+    width: 100px;
+    background: #828282;
+  }
+}
+
+.containerCards {
+  margin: 0;
+  padding: 0;
+}

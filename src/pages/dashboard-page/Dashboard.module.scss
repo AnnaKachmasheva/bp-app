@@ -2,10 +2,12 @@
 
 .container {
   display: flex;
+  justify-content: center;
+
   flex-wrap: wrap;
   gap: 20px;
 
-  padding-top: 200px;
+  padding: 100px 0;
 
   .card {
     height: 20vh;
@@ -32,4 +34,28 @@
       font-size: 3vh;
     }
   }
+}
+
+@media (max-width: 768px) {
+
+  .container {
+
+    width: 100vw;
+    margin: 0;
+    padding-top: 100px;
+
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .card {
+      width: 90vw;
+
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+
 }

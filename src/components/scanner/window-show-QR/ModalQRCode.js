@@ -1,9 +1,8 @@
-import React from "react";
+import React, {useEffect, useRef} from "react";
 import ModalWindow from "../../modal/ModalWindow";
 import QRCode from "qrcode.react";
 import styles from "./ModalQRCode.module.scss";
 import Button, {ButtonSize, ButtonType} from "../../button/Button";
-import {useNavigate} from "react-router-dom";
 
 
 export const ModalQRCode = (props) => {

@@ -9,6 +9,7 @@ import DocumentationPage from "../pages/documentation-page/DocumentationPage";
 import BasicPage from "../pages/BasicPage";
 import ProductPage from "../pages/product-page/ProductPage";
 import VariantPage from "../pages/variant-page/VariantPage";
+import ScanPage from "../pages/scan-page/ScanPage";
 
 
 export const routes = [
@@ -31,6 +32,11 @@ export const routes = [
         path: "app/inventory/product/:idProduct/variant/:idVariant",
         main: () => <BasicPage page={<VariantPage/>}
                                title={PageTitles.INVENTORY}/>
+    },
+    {
+        path: "app/search",
+        main: () => <BasicPage page={<ScanPage/>}
+                               title={PageTitles.SEARCH}/>
     },
     {
         path: "app/users",

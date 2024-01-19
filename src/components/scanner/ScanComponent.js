@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {ModalScanQRCode} from "./window-scan-QR/ModalScanQRCode";
 import {ModalQRCode} from "./window-show-QR/ModalQRCode";
 import {QRScanLibraries} from "../../utils/Constants";
@@ -34,6 +34,27 @@ function ScanComponent() {
         setData(null);
         setShowModalScanQr(true);
     }
+
+    const modalRef = useRef(null);
+    const videosRef = useRef([]);
+
+    useEffect(() => {
+        if ([showModalScanQr]) {
+            // Find all video elements within the modal when it opens
+            const videosInModal = modalRef.current.querySelectorAll('video');
+
+            // Save references to all videos
+            videosRef.current = Array.from(videosInModal).map((video) => ({ ref: video }));
+        } else {
+            // Pause and reset all videos when the modal is closed
+            videosRef.current.forEach(({ ref }) => {
+                if (ref) {
+                    ref.stop();
+                    ref.currentTime = 0;
+                }
+            });
+        }
+    }, [showModalScanQr]);
 
     return (
         <div className={'contentContainer'}>

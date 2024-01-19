@@ -108,3 +108,48 @@
   }
 
 }
+
+.burgerButton {
+  display: none;
+}
+
+.iconBurger {
+  color: white;
+  margin-top: -20px;
+  padding-bottom: 6px;
+  cursor: pointer;
+}
+
+.burgerMenu {
+  display: grid;
+  grid-template-rows: 70px 70px 70px 70px 70px 70px calc(100% - 700px) 70px;
+  background: $green-color;
+  border: 1px solid $green-color;
+}
+
+@media (max-width: 768px) {
+  .burgerButton {
+    margin-top: 6px;
+    display: block;
+  }
+
+  /* Скрываем обычное меню на мобильных устройствах */
+  .fullSidebar, .logoContainer  {
+    display: none;
+  }
+
+  .sidebarContainer {
+    display: block;
+
+    width: 100vw;
+    height: auto;
+  }
+
+    /* Отображаем бургер-меню на мобильных устройствах */
+  .burgerMenu {
+    display: grid;
+    grid-template-rows: 70px 70px 70px 70px 70px 70px calc(100% - 700px) 70px;
+    background: $green-color;
+    border: 1px solid $green-color;
+  }
+}

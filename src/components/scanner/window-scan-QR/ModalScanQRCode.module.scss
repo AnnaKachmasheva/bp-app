@@ -35,6 +35,8 @@
     position: absolute;
     top: 26px;
     right: 26px;
+    color: $text-color;
+
   }
 
   .icon:hover {
@@ -44,6 +46,14 @@
   h2, p {
     color: $bg-color;
     text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .icon {
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 

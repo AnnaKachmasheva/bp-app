@@ -1,5 +1,6 @@
 import React, {useEffect, useRef} from 'react';
 import QrScanner from 'qr-scanner';
+import styles from "./ScannerComponent.module.scss";
 
 const QrScannerComponent = (props) => {
 
@@ -15,7 +16,7 @@ const QrScannerComponent = (props) => {
                 props.handleData(result);
             },
             (error) => {
-                console.log('QR scanner error:', error);
+                // console.log('QR scanner error:', error);
             }
         );
 
@@ -31,7 +32,8 @@ const QrScannerComponent = (props) => {
 
     return (
         <video ref={videoRef}
-               style={{width: '100%'}}/>
+               style={{width: '100%'}}
+               className={styles.cameraContainer}/>
     );
 };
 
