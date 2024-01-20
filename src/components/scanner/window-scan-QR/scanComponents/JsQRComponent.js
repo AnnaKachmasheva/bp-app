@@ -55,8 +55,9 @@ const JsQRComponent = (props) => {
 
 
     return (
-        <div className={styles.cameraContainer}>
+        <div>
             <video
+                className={styles.cameraContainer}
                 ref={videoRef}
                 style={{width: '100%'}}
                 autoPlay
