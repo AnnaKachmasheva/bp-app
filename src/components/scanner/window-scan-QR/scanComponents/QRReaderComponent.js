@@ -8,6 +8,8 @@ const QRReaderComponent = (props) => {
     return (
         <div>
             <QrReader
+                constraints={{ facingMode: 'environment' }}
+                videoStyle={{ height: '100%' }}
                 onResult={(result, error) => {
                     if (!!result) {
                         props.handleData(result?.text);
