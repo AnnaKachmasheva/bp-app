@@ -53,7 +53,6 @@ export const ModalScanQRCode = (props) => {
 
             default:
                 return null;
-
         }
     }
 

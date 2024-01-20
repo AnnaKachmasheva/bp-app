@@ -57,3 +57,40 @@ export const toStringForQRCode = (jsonObject) => {
     // Construct the final string with both required and optional parameters
     return `id:${id},price:${price},minQuantity:${minQuantity},quantity:${quantity},photo:${photo}${optionsString}`;
 }
+
+export const fromStringForQRCode = (inputString) => {
+    // Check if the input string has the expected format
+    const formatCheck = /^id:\w+,price:\w+,minQuantity:\w+,quantity:\w+,photo:\w+(,[^:]+:\w+)*$/;
+
+    if (!formatCheck.test(inputString)) {
+        // Return null if the format is not as expected
+        return null;
+    }
+
+    // Split the input string into an array of key-value pairs
+    const keyValuePairs = inputString.split(',');
+
+    // Initialize an object to store the reconstructed JSON
+    const reconstructedObject = {};
+
+    // Iterate through key-value pairs and populate the object
+    keyValuePairs.forEach(pair => {
+        const [key, value] = pair.split(':');
+        reconstructedObject[key] = value;
+    });
+
+    // Process the options string and convert it back to an array of objects
+    if (reconstructedObject.options) {
+        const optionsArray = reconstructedObject.options.split(',').map(option => {
+            const [key, value] = option.split(':');
+            const optionObject = {};
+            optionObject[key] = value;
+            return optionObject;
+        });
+        reconstructedObject.options = optionsArray;
+    }
+
+    // Return the reconstructed JSON object
+    return reconstructedObject;
+}
+

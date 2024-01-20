@@ -1,16 +1,24 @@
 import React, {useState} from "react";
 import {QRScanLibraries} from "../../utils/Constants";
 import {ModalScanQRCode} from "../../components/scanner/window-scan-QR/ModalScanQRCode";
-import {toStringForQRCode} from "../../utils/Common";
+import {fromStringForQRCode, toStringForQRCode} from "../../utils/Common";
 import styles from './Scan.module.scss';
+import {ModalQRCode} from "../../components/scanner/window-show-QR/ModalQRCode";
+import {useNavigate} from "react-router-dom";
+import {ModalInvalidCode} from "./modalWindowInvalidCode/ModalInvalidCode";
 
 const ScanPage = () => {
 
     const [showModalScanQr, setShowModalScanQr] = useState(false);
+    const [showModalQr, setShowModalQr] = useState(false);
     const [scanMethod, setScanMethod] = useState(QRScanLibraries[0]);
+    const [showInvalidCode, setShowInvalidCode] = useState(false);
 
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
+
+
+    const navigate = useNavigate();
 
     const handleSelectScanLibrary = (library) => {
         setScanMethod(library);
@@ -18,31 +26,15 @@ const ScanPage = () => {
     };
 
     const handleData = data => {
-        setData(data);
 
-        // check data
         if (data != null) {
-            // get uuid
-            const uuid = getuuid(data);
-            if (uuid == null) {
-                handleError('UUID not found in scanned data')
+            setData(data);
+            setShowModalScanQr(false)
+            const variant = fromStringForQRCode(data)
+            if (variant != null) {
+                setShowModalQr(true)
             } else {
-
-                // get variant by uuid
-                const variant = getVariantByUUID(uuid);
-                if (variant == null) {
-                    handleError('Not found variant by uuid: ' + uuid)
-                } else {
-                    // check parameters
-                    const foundVariantStr = toStringForQRCode(variant);
-
-                    // check if data valid
-                    if (foundVariantStr === data) {
-                        handleError('Found variant: ' + variant)
-                    } else {
-                        handleError('QR code contains invalid data')
-                    }
-                }
+                setShowInvalidCode(true)
             }
         }
     }
@@ -51,29 +43,14 @@ const ScanPage = () => {
         setError(errorMessage)
     }
 
-    function getuuid(data) {
-        // Define a regular expression to match the UUID
-        const uuidRegex = /uuid:(.+)/;
-
-        // Use the regex to find the UUID in the string
-        const match = data.match(uuidRegex);
-
-        // Extract the UUID if a match is found
-        return match ? match[1] : null;
+    const goToVariantPage = (data) => {
+        const idProduct = data.product.id;
+        const idVariant = data.id;
+        navigate(`/app/inventory/product/${idProduct}/variant/${idVariant}`, {state: {data: data}});
     }
 
-    function getVariantByUUID(uuid) {
-        // for (const category of mocData.categories) {
-        //     for (const item of category.items) {
-        //         for (const variant of item.variants) {
-        //             if (variant.uuid === uuid) {
-        //                 return variant;
-        //             }
-        //         }
-        //     }
-        // }
-        // If variant is not found
-        return null;
+    function rescanHandle() {
+        setData(null)
     }
 
     return (
@@ -85,6 +62,15 @@ const ScanPage = () => {
                              handleData={handleData}
                              scanMethod={scanMethod}/>
 
+            <ModalQRCode onClose={() => setShowModalQr(false)}
+                         data={data}
+                         showVariant={() => goToVariantPage(data)}
+                         show={showModalQr}/>
+
+            <ModalInvalidCode onClose={() => setShowInvalidCode(false)}
+                              rescan={() => rescanHandle()}
+                              data={data}
+                              show={showInvalidCode}/>
 
             <h4>Select a library to scan</h4>
 

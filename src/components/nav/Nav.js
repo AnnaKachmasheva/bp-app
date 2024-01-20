@@ -8,6 +8,8 @@ import {ModalProduct} from "../../pages/inventory-page/modalWindowProduct/ModalP
 import MOCK_DATA from "../../pages/inventory-page/MOCK_DATA.json";
 import {ModalScanQRCode} from "../scanner/window-scan-QR/ModalScanQRCode";
 import {toStringForQRCode} from "../../utils/Common";
+import {ModalQRCode} from "../scanner/window-show-QR/ModalQRCode";
+import {useNavigate} from "react-router-dom";
 
 const Nav = (props) => {
 
@@ -16,11 +18,14 @@ const Nav = (props) => {
     const [showDropdownListLibraries, setShowDropdownListLibraries] = useState(false);
     const [showAddItem, setShowAddItem] = useState(false);
     const [showAddUser, setShowAddUser] = useState(false);
+    const [showQrCode, setShowQrCode] = useState(false);
 
     const [showModalScanQr, setShowModalScanQr] = useState(false);
     const [scanMethod, setScanMethod] = useState(QRScanLibraries[0]);
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
+
+    const navigate = useNavigate();
 
     const toggleDropdownListLibraries = () => {
         setData(null);
@@ -162,6 +167,12 @@ const Nav = (props) => {
         }
     }
 
+    const goToVariantPage = (variant) => {
+        const idProduct = variant.id;
+        const idVariant = variant.id;
+        navigate(`/app/inventory/product/${idProduct}/variant/${idVariant}`, {state: {variant: variant}});
+    }
+
     return (
         <div>
             <ModalProduct onClose={() => setShowAddItem(false)}
@@ -169,8 +180,14 @@ const Nav = (props) => {
                           categories={mocData.categories}
                           show={showAddItem}/>
 
+            <ModalQRCode onClose={() => setShowQrCode(false)}
+                         data={data}
+                         showVariant={() => goToVariantPage(data)}
+                         show={showQrCode}/>
+
             {/*<ModalAddUser onClose={() => setShowAddUser(false)}*/}
             {/*              show={showAddUser}/>*/}
+
 
             <ModalScanQRCode onClose={() => setShowModalScanQr(false)}
                              show={showModalScanQr}
