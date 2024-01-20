@@ -15,7 +15,6 @@ const Nav = (props) => {
 
     const [showDropdownListLibraries, setShowDropdownListLibraries] = useState(false);
     const [showAddItem, setShowAddItem] = useState(false);
-    const [showAddTag, setShowAddTag] = useState(false);
     const [showAddUser, setShowAddUser] = useState(false);
 
     const [showModalScanQr, setShowModalScanQr] = useState(false);
@@ -97,18 +96,13 @@ const Nav = (props) => {
 
     function renderAddButton(title) {
         switch (title) {
-            case PageTitles.USERS:
-                return (<Button type={ButtonType[0].type}
-                                size={ButtonSize[1].size}
-                                onClick={() => setShowAddUser(true)}
-                                label={<AddButtonContent title={PageTitles.USERS}/>}
-                                icon={<AiOutlinePlus/>}/>)
-            case PageTitles.TAGS:
-                return (<Button type={ButtonType[0].type}
-                                size={ButtonSize[1].size}
-                                onClick={() => setShowAddTag(true)}
-                                label={<AddButtonContent title={PageTitles.TAGS}/>}
-                                icon={<AiOutlinePlus/>}/>)
+            // case PageTitles.USERS:
+            //     return (<Button type={ButtonType[0].type}
+            //                     size={ButtonSize[1].size}
+            //                     onClick={() => setShowAddUser(true)}
+            //                     label={<AddButtonContent title={PageTitles.USERS}/>}
+            //                     icon={<AiOutlinePlus/>}/>)
+            //
             case PageTitles.INVENTORY:
                 return (<Button type={ButtonType[0].type}
                                 size={ButtonSize[1].size}
@@ -201,8 +195,6 @@ class AddButtonContent extends Component {
         switch (this.props.title) {
             case PageTitles.USERS:
                 return 'user'
-            case PageTitles.TAGS:
-                return 'tag'
             case PageTitles.INVENTORY:
                 return 'item'
             default:
