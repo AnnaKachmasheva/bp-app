@@ -18,8 +18,6 @@ const QRReaderComponent = (props) => {
                         // console.info(error);
                     }
                 }}
-
-                className={styles.qrReaderCameraContainer}
             />
         </div>
     );
