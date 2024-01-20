@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import styles from './ModalScanQRCode.module.scss';
 import {AiOutlineClose} from "react-icons/ai";
 import Html5QrCodeComponent from "./scanComponents/Html5QrCodeComponent";
@@ -10,14 +10,31 @@ import JsQRComponent from "./scanComponents/JsQRComponent";
 
 export const ModalScanQRCode = (props) => {
 
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const loadData = async () => {
+
+            setLoading(false);
+        };
+
+        loadData();
+    }, []);
+
     if (!props.show)
         return null;
 
+    if (!props.show) return null;
     const handleData = data => {
         props.handleData(data);
     }
 
     const renderContent = () => {
+
+        if (loading) {
+            return <p>Please wait...</p>;
+        }
+
         switch (props.scanMethod.name) {
 
             case QRScanLibraries[0].name:
