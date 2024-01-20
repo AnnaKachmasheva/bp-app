@@ -8,6 +8,7 @@ const QRReaderComponent = (props) => {
     return (
         <div>
             <QrReader
+                className={styles.qrReader}
                 constraints={{ facingMode: 'environment' }}
                 videoStyle={{ height: '100%' }}
                 onResult={(result, error) => {
