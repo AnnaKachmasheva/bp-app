@@ -55,12 +55,11 @@ export const ModalScanQRCode = (props) => {
 
                 <div className={styles.scanContainer}>
 
+                    {renderContent()}
+
                     <p className={styles.selectedLibrary}>
                         Selected library: <span>{props.scanMethod.name} {props.scanMethod.version}</span>
                     </p>
-
-                    {renderContent()}
-
 
                     {props.data == null ?
                         null :

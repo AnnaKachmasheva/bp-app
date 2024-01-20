@@ -32,7 +32,7 @@ const QrScannerComponent = (props) => {
 
     return (
         <video ref={videoRef}
-               style={{width: '100%'}}
+               style={{ width:  '100vw', height: '100vh' }} //full screen
                className={styles.cameraContainer}/>
     );
 };

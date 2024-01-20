@@ -9,7 +9,7 @@ const createConfig = () => {
 
     config.fps = 10;
     config.qrbox = 250;
-    
+
     return config;
 };
 

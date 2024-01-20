@@ -51,22 +51,21 @@
 .selectedLibrary, .resultData, .error  {
   width: 100vw;
   text-align: center;
+  bottom: 0;
 
   z-index: 10000;
   position: absolute;
 }
 
 .selectedLibrary {
-  margin-top: 100px;
+  margin-bottom: 100px;
 }
 
 .resultData {
-  bottom: 0;
   margin-bottom: 60px;
 }
 
 .error {
-  bottom: 0;
   margin-bottom: 30px;
 }
 
