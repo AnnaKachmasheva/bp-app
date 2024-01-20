@@ -1,11 +1,10 @@
 @import '../../../././colors.scss';
 
 .scanContainer {
-  width: 400px;
-  height: 400px;
+  width: 100vw;
+  height: 100vh;
 
   margin-bottom: 100px;
-
 
   p {
     font-size: 1.4em;
@@ -17,8 +16,8 @@
 }
 
 .contentFullScreen {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   margin: 0;
   padding: 0;
   background: $modal-background-color;
@@ -31,12 +30,12 @@
 
 
   .icon {
+    z-index: 10000;
     cursor: pointer;
     position: absolute;
     top: 26px;
     right: 26px;
     color: $text-color;
-
   }
 
   .icon:hover {
@@ -47,6 +46,28 @@
     color: $bg-color;
     text-align: center;
   }
+}
+
+.selectedLibrary, .resultData, .error  {
+  width: 100vw;
+  text-align: center;
+
+  z-index: 10000;
+  position: absolute;
+}
+
+.selectedLibrary {
+  margin-top: 100px;
+}
+
+.resultData {
+  bottom: 0;
+  margin-bottom: 60px;
+}
+
+.error {
+  bottom: 0;
+  margin-bottom: 30px;
 }
 
 @media (max-width: 768px) {

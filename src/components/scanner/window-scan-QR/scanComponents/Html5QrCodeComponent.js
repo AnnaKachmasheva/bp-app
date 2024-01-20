@@ -4,20 +4,12 @@ import styles from "./ScannerComponent.module.scss";
 
 const qrcodeRegionId = "html5qr-code-full-region";
 
-const createConfig = (props) => {
+const createConfig = () => {
     let config = {};
-    if (props.fps) {
-        config.fps = props.fps;
-    }
-    if (props.qrbox) {
-        config.qrbox = props.qrbox;
-    }
-    if (props.aspectRatio) {
-        config.aspectRatio = props.aspectRatio;
-    }
-    if (props.disableFlip !== undefined) {
-        config.disableFlip = props.disableFlip;
-    }
+
+    config.fps = 10;
+    config.qrbox = 250;
+    
     return config;
 };
 
@@ -25,14 +17,13 @@ const Html5QrCodeComponent = (props) => {
 
     useEffect(() => {
         // when component mounts
-        const config = createConfig(props);
-        const verbose = props.verbose === true;
+        const config = createConfig();
         // Suceess callback
         if (!(props.handleData)) {
             props.handleData("")
             // throw "qrCodeSuccessCallback is required callback.";
         }
-        const html5QrcodeScanner = new Html5QrcodeScanner(qrcodeRegionId, config, verbose);
+        const html5QrcodeScanner = new Html5QrcodeScanner(qrcodeRegionId, config, false);
 
         const container = document.getElementById(qrcodeRegionId);
         if (html5QrcodeScanner && container?.innerHTML === "") {
