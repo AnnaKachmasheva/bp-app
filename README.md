@@ -1,5 +1,5 @@
 
-Aktuální verze je zde [web](https://items.d2ey22r11l2pi7.amplifyapp.com/)
+Aktuální verze je zde [web](https://master.d2ey22r11l2pi7.amplifyapp.com/)
 
 
 ----
