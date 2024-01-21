@@ -49,7 +49,7 @@ export const routes = [
                                title={PageTitles.PROFILE}/>
     },
     {
-        path: "documentation",
+        path: "doc",
         main: () => <DocumentationPage/>
     }
 
